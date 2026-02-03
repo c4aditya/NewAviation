@@ -36,7 +36,7 @@ const AboutUs = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-aviation-primary to-aviation-secondary py-20 text-white">
+      <section className="relative bg-gradient-to-r from-aviation-primary to-aviation-secondary py-20 text-white background-color">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center animate-fadeInUp">
             <Plane className="mx-auto mb-6" size={64} />
@@ -53,7 +53,7 @@ const AboutUs = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl font-bold text-gray-800 mb-6 text-center">Our Story</h2>
-            <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
+            <div className="space-y-6 text-gray-700  leading-relaxed">
               <p>
                 Founded in 2015, <span className="font-bold text-aviation-primary">SkyWings Aviation & Travel</span> was born from a vision to revolutionize the travel booking experience in India. What started as a small team of passionate aviation enthusiasts has grown into one of the country's most trusted travel platforms.
               </p>
@@ -74,7 +74,7 @@ const AboutUs = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             <div className="bg-white p-8 rounded-2xl shadow-lg">
               <div className="bg-aviation-primary w-16 h-16 rounded-full flex items-center justify-center mb-6">
-                <Target className="text-white" size={32} />
+                <Target className='icon-mid' size={32} />
               </div>
               <h3 className="text-3xl font-bold text-gray-800 mb-4">Our Mission</h3>
               <p className="text-gray-700 text-lg leading-relaxed">
@@ -84,7 +84,7 @@ const AboutUs = () => {
 
             <div className="bg-white p-8 rounded-2xl shadow-lg">
               <div className="bg-aviation-secondary w-16 h-16 rounded-full flex items-center justify-center mb-6">
-                <Eye className="text-white" size={32} />
+                <Eye className='icon-mid' size={32} />
               </div>
               <h3 className="text-3xl font-bold text-gray-800 mb-4">Our Vision</h3>
               <p className="text-gray-700 text-lg leading-relaxed">
@@ -109,7 +109,7 @@ const AboutUs = () => {
               return (
                 <div key={index} className="text-center group hover:transform hover:-translate-y-2 transition-all duration-300">
                   <div className="bg-aviation-primary w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-aviation-secondary transition-colors">
-                    <Icon className="text-white" size={32} />
+                    <Icon className='icon-mid' size={32} />
                   </div>
                   <h3 className="text-xl font-bold text-gray-800 mb-3">{value.title}</h3>
                   <p className="text-gray-600">{value.description}</p>
@@ -130,7 +130,7 @@ const AboutUs = () => {
 
           <div className="max-w-4xl mx-auto">
             <div className="relative">
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-aviation-primary"></div>
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-aviation-primary border-main"></div>
               
               {milestones.map((milestone, index) => (
                 <div key={index} className={`mb-8 flex ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} items-center`}>
@@ -141,7 +141,7 @@ const AboutUs = () => {
                     </div>
                   </div>
                   <div className="w-2/12 flex justify-center">
-                    <div className="w-4 h-4 bg-aviation-primary rounded-full border-4 border-white shadow-lg"></div>
+                    <div className="w-4 h-4 bg-aviation-primary rounded-full border-4 border-white shadow-lg border-main"></div>
                   </div>
                   <div className="w-5/12"></div>
                 </div>
@@ -152,7 +152,7 @@ const AboutUs = () => {
       </section>
 
       {/* Stats */}
-      <section className="py-16 bg-aviation-primary text-white">
+      <section className="py-16 main-back text-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
             <div className="text-center">

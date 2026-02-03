@@ -59,7 +59,7 @@ const ContactUs = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-aviation-primary to-aviation-secondary py-20 text-white">
+      <section className="relative bg-gradient-to-r from-aviation-primary to-aviation-secondary py-20 text-white background-color">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center animate-fadeInUp">
             <MessageSquare className="mx-auto mb-6" size={64} />

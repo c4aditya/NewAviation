@@ -17,13 +17,13 @@ const Flights = () => {
     let result = flights;
 
     if (filters.from) {
-      result = result.filter(f => 
+      result = result.filter(f =>
         f.from.toLowerCase().includes(filters.from.toLowerCase())
       );
     }
 
     if (filters.to) {
-      result = result.filter(f => 
+      result = result.filter(f =>
         f.to.toLowerCase().includes(filters.to.toLowerCase())
       );
     }
@@ -63,7 +63,7 @@ const Flights = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-aviation-primary to-aviation-secondary py-16 text-white">
+      <section className="bg-gradient-to-r from-aviation-primary to-aviation-secondary py-16 text-white background-color">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <Plane className="mx-auto mb-4" size={56} />

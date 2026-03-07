@@ -1,4 +1,5 @@
-import { Plane, Target, Eye, Award, Users, Globe, Heart, TrendingUp } from 'lucide-react';
+import { Plane, Target, Eye, Award, Users, Globe, Heart, TrendingUp, Clock, Shield, Star, CheckCircle } from 'lucide-react';
+import StatsCounter from '../components/StatsCounter';
 
 const AboutUs = () => {
   const values = [
@@ -25,12 +26,23 @@ const AboutUs = () => {
   ];
 
   const milestones = [
-    { year: '2015', event: 'Founded SkyWings Aviation & Travel' },
-    { year: '2017', event: 'Expanded to 50+ destinations' },
-    { year: '2019', event: 'Launched Aviation Academy' },
-    { year: '2022', event: 'Reached 1 Million+ bookings' },
-    { year: '2024', event: 'ISO 9001:2015 Certified' },
-    { year: '2026', event: '50,000+ Happy Customers' }
+    { year: '2015', event: 'Founded Anant Airways with a vision to redefine travel.' },
+    { year: '2016', event: 'First major partnership with domestic airlines.' },
+    { year: '2017', event: 'Expanded to 50+ destinations across India.' },
+    { year: '2018', event: 'Opened our flagship Aviation Academy.' },
+    { year: '2019', event: 'Reached milestone of 500,000 monthly active users.' },
+    { year: '2021', event: 'Successfully launched our comprehensive mobile app.' },
+    { year: '2023', event: 'Strategic expansion into international markets.' },
+    { year: '2024', event: 'ISO 9001:2015 Certified for excellence in service.' },
+    { year: '2026', event: 'Over 50,000+ Happy Customers globally.' }
+  ];
+
+  const stats = [
+    { number: '10+', label: 'User Experience (Years)' },
+    { number: '50K+', label: 'Happy Customers' },
+    { number: '98%', label: 'Satisfaction Rate' },
+    { number: '1000+', label: 'Flights Operated Daily' },
+    { number: '150+', label: 'Countries Served' }
   ];
 
   return (
@@ -40,7 +52,7 @@ const AboutUs = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center animate-fadeInUp">
             <Plane className="mx-auto mb-6" size={64} />
-            <h1 className="text-5xl font-bold mb-6">About SkyWings</h1>
+            <h1 className="text-5xl font-bold mb-6">About Anant Airways</h1>
             <p className="text-xl text-blue-100">
               Leading the aviation and travel industry with innovation, excellence, and customer satisfaction since 2015
             </p>
@@ -55,7 +67,7 @@ const AboutUs = () => {
             <h2 className="text-4xl font-bold text-gray-800 mb-6 text-center">Our Story</h2>
             <div className="space-y-6 text-gray-700  leading-relaxed">
               <p>
-                Founded in 2015, <span className="font-bold text-aviation-primary">SkyWings Aviation & Travel</span> was born from a vision to revolutionize the travel booking experience in India. What started as a small team of passionate aviation enthusiasts has grown into one of the country's most trusted travel platforms.
+                Founded in 2015, <span className="font-bold text-aviation-primary">Anant Airways</span> was born from a vision to revolutionize the travel booking experience in India. What started as a small team of passionate aviation enthusiasts has grown into one of the country's most trusted travel platforms.
               </p>
               <p>
                 We understand that travel is more than just reaching a destination—it's about the journey, the experiences, and the memories created along the way. That's why we've dedicated ourselves to making every aspect of travel planning seamless, affordable, and enjoyable.
@@ -72,23 +84,23 @@ const AboutUs = () => {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            <div className="bg-white p-8 rounded-2xl shadow-lg">
-              <div className="bg-aviation-primary w-16 h-16 rounded-full flex items-center justify-center mb-6">
-                <Target className='icon-mid' size={32} />
+            <div className="bg-white p-8 rounded-none border-t-4 border-blue-600 shadow-xl transition-all hover:-translate-y-2">
+              <div className="bg-blue-600 w-16 h-16 rounded-none flex items-center justify-center mb-6">
+                <Target className='text-white' size={32} />
               </div>
-              <h3 className="text-3xl font-bold text-gray-800 mb-4">Our Mission</h3>
-              <p className="text-gray-700 text-lg leading-relaxed">
-                To provide seamless, affordable, and reliable travel solutions that empower people to explore the world with confidence. We strive to make travel accessible to everyone through innovative technology and exceptional customer service.
+              <h3 className="text-3xl font-bold text-gray-800 mb-4 font-inter">Our Mission</h3>
+              <p className="text-gray-700 text-lg leading-relaxed font-inter">
+                At Anant Airways, our mission is to deliver seamless, innovative, and cost-effective travel solutions that inspire confidence and curiosity in every traveler. We are dedicated to making travel universally accessible through cutting-edge technology and an unwavering commitment to exceptional customer care.
               </p>
             </div>
 
-            <div className="bg-white p-8 rounded-2xl shadow-lg">
-              <div className="bg-aviation-secondary w-16 h-16 rounded-full flex items-center justify-center mb-6">
-                <Eye className='icon-mid' size={32} />
+            <div className="bg-white p-8 rounded-none border-t-4 border-blue-800 shadow-xl transition-all hover:-translate-y-2">
+              <div className="bg-blue-800 w-16 h-16 rounded-none flex items-center justify-center mb-6">
+                <Eye className='text-white' size={32} />
               </div>
-              <h3 className="text-3xl font-bold text-gray-800 mb-4">Our Vision</h3>
-              <p className="text-gray-700 text-lg leading-relaxed">
-                To become India's most trusted and preferred travel partner, recognized for innovation, quality, and customer satisfaction. We envision a future where travel planning is effortless and every journey is memorable.
+              <h3 className="text-3xl font-bold text-gray-800 mb-4 font-inter">Our Vision</h3>
+              <p className="text-gray-700 text-lg leading-relaxed font-inter">
+                We envision becoming the gold standard in the global travel industry, recognized for our transformative impact on how people explore the world. Our goal is to create a future where every journey is effortlessly planned, perfectly executed, and deeply memorable for every segment of travelers.
               </p>
             </div>
           </div>
@@ -131,7 +143,7 @@ const AboutUs = () => {
           <div className="max-w-4xl mx-auto">
             <div className="relative">
               <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-aviation-primary border-main"></div>
-              
+
               {milestones.map((milestone, index) => (
                 <div key={index} className={`mb-8 flex ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} items-center`}>
                   <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
@@ -152,29 +164,36 @@ const AboutUs = () => {
       </section>
 
       {/* Stats */}
-      <section className="py-16 main-back text-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-            <div className="text-center">
-              <TrendingUp size={48} className="mx-auto mb-4" />
-              <div className="text-4xl font-bold mb-2">10+</div>
-              <div className="text-blue-100">Years Experience</div>
-            </div>
-            <div className="text-center">
-              <Users size={48} className="mx-auto mb-4" />
-              <div className="text-4xl font-bold mb-2">50K+</div>
-              <div className="text-blue-100">Happy Customers</div>
-            </div>
-            <div className="text-center">
-              <Globe size={48} className="mx-auto mb-4" />
-              <div className="text-4xl font-bold mb-2">150+</div>
-              <div className="text-blue-100">Destinations</div>
-            </div>
-            <div className="text-center">
-              <Award size={48} className="mx-auto mb-4" />
-              <div className="text-4xl font-bold mb-2">98%</div>
-              <div className="text-blue-100">Satisfaction Rate</div>
-            </div>
+      {/* Statistics Section (Animated) */}
+      <section className="py-20 bg-blue-600 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16 text-white ">
+            <h2 className="text-4xl font-bold mb-4 font-inter">Our Impact by Numbers</h2>
+            <p className="text-blue-100 text-lg max-w-2xl mx-auto font-inter">Witness the scale of our operations and the trust we have built over the years.</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 max-w-6xl mx-auto">
+            {stats.map((stat, index) => (
+              <StatsCounter key={index} number={stat.number} label={stat.label} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section for About Page */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold text-gray-800 mb-6 font-inter">Want to Be a Part of Our Story?</h2>
+          <p className="text-gray-600 text-xl mb-10 max-w-3xl mx-auto font-inter">
+            Join the Anant Airways family and help us redefine the future of travel. Whether you're a traveler or a professional, we have a place for you.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <button className="bg-blue-600 text-white px-8 py-4 rounded-none font-bold hover:bg-blue-700 transition flex items-center gap-2 uppercase tracking-wide">
+              Join our Team <CheckCircle size={20} />
+            </button>
+            <button className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-none font-bold hover:bg-blue-50 transition uppercase tracking-wide">
+              Contact Sales
+            </button>
           </div>
         </div>
       </section>

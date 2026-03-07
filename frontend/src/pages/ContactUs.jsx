@@ -33,7 +33,7 @@ const ContactUs = () => {
     {
       icon: MapPin,
       title: 'Visit Us',
-      details: ['123 Aviation Hub, Terminal 2', 'New Delhi - 110037, India'],
+      details: ['Plot no. 77, D Block, Sector 63, Hazratpur Wajidpur, Uttar Pradesh 201309'],
       color: 'blue'
     },
     {
@@ -45,7 +45,7 @@ const ContactUs = () => {
     {
       icon: Mail,
       title: 'Email Us',
-      details: ['info@aviationtravel.com', 'support@aviationtravel.com'],
+      details: ['info@anantairways.com', 'support@anantairways.com', "admission@anantairways.com"],
       color: 'orange'
     },
     {
@@ -83,7 +83,7 @@ const ContactUs = () => {
                 orange: 'bg-orange-100 text-orange-600',
                 purple: 'bg-purple-100 text-purple-600'
               };
-              
+
               return (
                 <div key={index} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
                   <div className={`${colors[info.color]} w-16 h-16 rounded-full flex items-center justify-center mb-4`}>
@@ -107,7 +107,7 @@ const ContactUs = () => {
             {/* Contact Form */}
             <div>
               <h2 className="text-3xl font-bold text-gray-800 mb-6">Send Us a Message</h2>
-              
+
               {submitted && (
                 <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-6 animate-fadeInUp">
                   Thank you! Your message has been sent successfully. We'll get back to you soon.
@@ -202,7 +202,7 @@ const ContactUs = () => {
             {/* Map & Additional Info */}
             <div>
               <h2 className="text-3xl font-bold text-gray-800 mb-6">Visit Our Office</h2>
-              
+
               {/* Map Placeholder */}
               <div className="bg-gray-200 rounded-xl overflow-hidden mb-6 h-64 flex items-center justify-center">
                 <div className="text-center text-gray-500">
@@ -252,7 +252,7 @@ const ContactUs = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Frequently Asked Questions</h2>
-            
+
             <div className="space-y-4">
               {[
                 {

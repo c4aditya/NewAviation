@@ -16,13 +16,13 @@ const Buses = () => {
     let result = buses;
 
     if (filters.from) {
-      result = result.filter(b => 
+      result = result.filter(b =>
         b.from.toLowerCase().includes(filters.from.toLowerCase())
       );
     }
 
     if (filters.to) {
-      result = result.filter(b => 
+      result = result.filter(b =>
         b.to.toLowerCase().includes(filters.to.toLowerCase())
       );
     }
@@ -57,7 +57,7 @@ const Buses = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-green-600 to-green-500 py-16 text-white">
+      <section className="bg-gradient-to-r from-green-600 to-green-500 py-16 text-white background-color">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <Bus className="mx-auto mb-4" size={56} />

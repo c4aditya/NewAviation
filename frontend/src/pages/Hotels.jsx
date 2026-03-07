@@ -23,7 +23,7 @@ const Hotels = () => {
       result = result.filter(h => h.city === filters.city);
     }
 
-    result = result.filter(h => 
+    result = result.filter(h =>
       h.price >= filters.minPrice && h.price <= filters.maxPrice
     );
 
@@ -32,7 +32,7 @@ const Hotels = () => {
     }
 
     if (filters.searchTerm) {
-      result = result.filter(h => 
+      result = result.filter(h =>
         h.name.toLowerCase().includes(filters.searchTerm.toLowerCase()) ||
         h.location.toLowerCase().includes(filters.searchTerm.toLowerCase())
       );
@@ -67,7 +67,7 @@ const Hotels = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-aviation-primary to-aviation-secondary py-16 text-white">
+      <section className="bg-gradient-to-r from-aviation-primary to-aviation-secondary py-16 text-white background-color">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <HotelIcon className="mx-auto mb-4" size={56} />
@@ -98,7 +98,7 @@ const Hotels = () => {
             </div>
 
             {/* Filter Toggle */}
-            <button 
+            <button
               onClick={() => setShowFilters(!showFilters)}
               className="btn-secondary flex items-center gap-2"
             >

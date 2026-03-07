@@ -11,10 +11,12 @@ const Navbar = () => {
     { name: 'Destinations', path: '/destinations' },
     { name: 'Flights', path: '/flights' },
     { name: 'Hotels', path: '/hotels' },
-    { name: 'Buses', path: '/buses' },
-    { name: 'Cabs', path: '/cabs' },
+    // { name: 'Buses', path: '/buses' },
+    // { name: 'Cabs', path: '/cabs' },
     { name: 'Academy', path: '/academy' },
     { name: 'About', path: '/about' },
+    { name: 'Career', path: '/career' },
+
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -51,8 +53,8 @@ const Navbar = () => {
                 <Plane className="text-white" size={28} />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-blue-600">SkyWings</h1>
-                <p className="text-xs text-gray-600">Aviation & Travel</p>
+                <h1 className="text-2xl font-bold text-blue-600">Anant Airways</h1>
+                <p className="text-xs text-gray-600">Flight & Travel Partner</p>
               </div>
             </Link>
 
@@ -62,17 +64,15 @@ const Navbar = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`font-semibold transition-colors relative group ${
-                    isActive(item.path)
-                      ? 'text-blue-600'
-                      : 'text-gray-700 hover:text-blue-600'
-                  }`}
+                  className={`font-semibold transition-colors relative group ${isActive(item.path)
+                    ? 'text-blue-600'
+                    : 'text-gray-700 hover:text-blue-600'
+                    }`}
                 >
                   {item.name}
                   <span
-                    className={`absolute -bottom-1 left-0 w-full h-0.5 bg-blue-600 transform origin-left transition-transform ${
-                      isActive(item.path) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                    }`}
+                    className={`absolute -bottom-1 left-0 w-full h-0.5 bg-blue-600 transform origin-left transition-transform ${isActive(item.path) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                      }`}
                   ></span>
                 </Link>
               ))}
@@ -89,9 +89,8 @@ const Navbar = () => {
 
           {/* Mobile Navigation */}
           <div
-            className={`lg:hidden overflow-hidden transition-all duration-300 ${
-              isOpen ? 'max-h-96 pb-4' : 'max-h-0'
-            }`}
+            className={`lg:hidden overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 pb-4' : 'max-h-0'
+              }`}
           >
             <div className="flex flex-col gap-2">
               {navigation.map((item) => (
@@ -99,11 +98,10 @@ const Navbar = () => {
                   key={item.path}
                   to={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={`py-2 px-4 rounded-lg font-semibold transition-colors ${
-                    isActive(item.path)
-                      ? 'bg-blue-600 text-white'
-                      : 'text-gray-700 hover:bg-gray-100'
-                  }`}
+                  className={`py-2 px-4 rounded-lg font-semibold transition-colors ${isActive(item.path)
+                    ? 'bg-blue-600 text-white'
+                    : 'text-gray-700 hover:bg-gray-100'
+                    }`}
                 >
                   {item.name}
                 </Link>

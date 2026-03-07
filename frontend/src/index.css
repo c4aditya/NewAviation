@@ -5,17 +5,88 @@
   background-color: #1f2937;
 }
 
-.icon-mid{
-  color: #1f2937;;
+.icon-mid {
+  color: #1f2937;
+  ;
 }
 
-.border-main{
+.slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: white;
+  padding: 10px;
+}
+
+.slide-track {
+  display: flex;
+  /* Double the width to accommodate duplicated images for seamless loop */
+  width: calc(250px * 22);
+  /* Movement from left to right */
+  animation: scroll-reverse 30s linear infinite;
+}
+
+.slide {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+}
+
+.slide img {
+
+  object-fit: contain;
+  border: 1px solid red;
+  transition: transform 0.3s ease;
+}
+
+.slide img:hover {
+  transform: scale(1.1);
+}
+
+@keyframes scroll-reverse {
+  0% {
+    transform: translateX(calc(-250px * 11));
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .slide {
+    width: 180px;
+  }
+
+  .slide-track {
+    width: calc(180px * 22);
+  }
+
+  @keyframes scroll-reverse {
+    0% {
+      transform: translateX(calc(-180px * 11));
+    }
+
+    100% {
+      transform: translateX(0);
+    }
+  }
+}
+
+
+.border-main {
   border: 2px solid #1f2937 !important;
   background-color: #1f2937;
 }
+
 .main-back {
   background-color: #1f2937;
 }
+
 @theme {
   --color-primary: #2563eb;
   --color-primary-hover: #1d4ed8;
@@ -33,7 +104,7 @@
   .btn-primary {
     @apply bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 active:translate-y-0;
   }
-  
+
   .btn-secondary {
     @apply bg-white hover:bg-gray-50 active:bg-gray-100 text-blue-600 font-semibold py-3 px-6 rounded-lg border-2 border-blue-600 transition-all duration-300 shadow-sm hover:shadow-md;
   }
@@ -41,11 +112,11 @@
   .btn-outline {
     @apply border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300;
   }
-  
+
   .card {
     @apply bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2;
   }
-  
+
   .input-field {
     @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all;
   }
@@ -61,6 +132,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -72,6 +144,7 @@
     opacity: 0;
     transform: translateX(30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);

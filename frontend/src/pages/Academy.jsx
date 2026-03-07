@@ -39,29 +39,33 @@ const Academy = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-aviation-primary to-aviation-secondary py-20 text-white">
+      <section className="relative bg-gradient-to-r from-aviation-primary to-aviation-secondary py-20 text-white background-color">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center animate-fadeInUp">
             <GraduationCap className="mx-auto mb-6" size={64} />
-            <h1 className="text-5xl font-bold mb-6">SkyWings Aviation Academy</h1>
+            <h1 className="text-5xl font-bold mb-6">Anant Airways Academy</h1>
             <p className="text-xl text-blue-100">
               Launch your career in aviation with India's premier training academy. Get certified and fly high!
             </p>
+            <button className="view-op bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition mt-10" onClick={() => Navigate('/aviation-job')}>Aviation Job
+            </button>
           </div>
+
         </div>
+
       </section>
 
       {/* Academy Overview */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center ">
               <div>
                 <h2 className="text-4xl font-bold text-gray-800 mb-6">Why Choose Our Academy?</h2>
                 <p className="text-gray-700 text-lg mb-6 leading-relaxed">
-                  SkyWings Aviation Academy is a premier institute dedicated to training the next generation of aviation professionals. With state-of-the-art facilities, experienced instructors, and industry partnerships, we provide comprehensive training programs that prepare students for successful careers in the aviation industry.
+                  Anant Airways Academy is a premier institute dedicated to training the next generation of aviation professionals. With state-of-the-art facilities, experienced instructors, and industry partnerships, we provide comprehensive training programs that prepare students for successful careers in the aviation industry.
                 </p>
-                
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                   {benefits.map((benefit, index) => (
                     <div key={index} className="flex items-center gap-3">
@@ -115,7 +119,7 @@ const Academy = () => {
                 <div className="text-5xl mb-4">{course.icon}</div>
                 <h3 className="text-2xl font-bold text-gray-800 mb-3">{course.title}</h3>
                 <p className="text-gray-600 mb-4">{course.description}</p>
-                
+
                 <div className="space-y-2 mb-6">
                   <div className="flex items-center gap-2 text-sm text-gray-700">
                     <Clock size={16} className="text-aviation-primary" />
@@ -131,7 +135,7 @@ const Academy = () => {
                   </div>
                 </div>
 
-                <button 
+                <button
                   onClick={() => handleEnquiry(course)}
                   className="w-full btn-primary"
                 >
@@ -155,8 +159,8 @@ const Academy = () => {
             {testimonials.map((testimonial) => (
               <div key={testimonial.id} className="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
                 <div className="flex items-center gap-4 mb-4">
-                  <img 
-                    src={testimonial.image} 
+                  <img
+                    src={testimonial.image}
                     alt={testimonial.name}
                     className="w-16 h-16 rounded-full object-cover"
                   />
@@ -178,7 +182,7 @@ const Academy = () => {
           <div className="bg-white rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-3xl font-bold text-gray-800">Course Enquiry</h3>
-              <button 
+              <button
                 onClick={() => setShowEnquiryForm(false)}
                 className="text-gray-500 hover:text-gray-700 text-3xl"
               >
@@ -202,7 +206,7 @@ const Academy = () => {
                 <input
                   type="text"
                   value={enquiryData.name}
-                  onChange={(e) => setEnquiryData({...enquiryData, name: e.target.value})}
+                  onChange={(e) => setEnquiryData({ ...enquiryData, name: e.target.value })}
                   className="input-field"
                   placeholder="Enter your full name"
                   required
@@ -218,7 +222,7 @@ const Academy = () => {
                   <input
                     type="email"
                     value={enquiryData.email}
-                    onChange={(e) => setEnquiryData({...enquiryData, email: e.target.value})}
+                    onChange={(e) => setEnquiryData({ ...enquiryData, email: e.target.value })}
                     className="input-field"
                     placeholder="your@email.com"
                     required
@@ -233,7 +237,7 @@ const Academy = () => {
                   <input
                     type="tel"
                     value={enquiryData.phone}
-                    onChange={(e) => setEnquiryData({...enquiryData, phone: e.target.value})}
+                    onChange={(e) => setEnquiryData({ ...enquiryData, phone: e.target.value })}
                     className="input-field"
                     placeholder="+91 98765 43210"
                     required
@@ -248,7 +252,7 @@ const Academy = () => {
                 </label>
                 <textarea
                   value={enquiryData.message}
-                  onChange={(e) => setEnquiryData({...enquiryData, message: e.target.value})}
+                  onChange={(e) => setEnquiryData({ ...enquiryData, message: e.target.value })}
                   rows="4"
                   className="input-field"
                   placeholder="Any specific questions or requirements..."
@@ -259,7 +263,7 @@ const Academy = () => {
                 <button type="submit" className="flex-1 btn-primary">
                   Submit Enquiry
                 </button>
-                <button 
+                <button
                   type="button"
                   onClick={() => setShowEnquiryForm(false)}
                   className="flex-1 btn-secondary"
@@ -272,14 +276,16 @@ const Academy = () => {
         </div>
       )}
 
+
+
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-aviation-primary to-aviation-secondary text-white">
+      <section className="py-16 bg-gradient-to-r from-aviation-primary to-aviation-secondary text-white background-color">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-4">Ready to Start Your Aviation Career?</h2>
           <p className="text-xl mb-8 text-blue-100">Join hundreds of successful graduates who are now flying high in their careers!</p>
-          <button 
+          <button
             onClick={() => setShowEnquiryForm(true)}
-            className="bg-white text-aviation-primary font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
+            className="bg-red-600 text-aviation-primary font-bold py-4 px-8 rounded-lg hover:bg-blue-600 transition-all duration-300 transform hover:scale-105"
           >
             Enroll Now
           </button>

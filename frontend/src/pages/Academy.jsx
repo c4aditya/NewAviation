@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { GraduationCap, BookOpen, Clock, Award, Check, User, Mail, Phone, MessageSquare } from 'lucide-react';
 import { courses, testimonials } from '../data/mockData';
-
+import { useNavigate } from 'react-router-dom';
 const Academy = () => {
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [showEnquiryForm, setShowEnquiryForm] = useState(false);
@@ -35,6 +35,8 @@ const Academy = () => {
     'Modern training facilities',
     'Flexible batch timings'
   ];
+
+  const Navigate = useNavigate();
 
   return (
     <div className="min-h-screen">

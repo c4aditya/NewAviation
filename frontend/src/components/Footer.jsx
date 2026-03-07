@@ -44,7 +44,7 @@ const Footer = () => {
                 </div>
               </div>
               <p className="text-gray-400 text-sm mb-4">
-                Your trusted partner for all aviation and travel needs. We provide seamless booking experiences for flights, hotels, buses, and cabs.
+                At Anant Airways, we are committed to transforming your travel dreams into reality you can do any thing that makes your dream true . The Company is recognizes NCT and MCA certified
               </p>
               <div className="flex gap-3">
                 <a href="#" className="bg-blue-600 p-2 rounded-full hover:bg-blue-700 transition-colors">
@@ -91,7 +91,7 @@ const Footer = () => {
               <ul className="space-y-3 text-gray-400">
                 <li className="flex items-start gap-2">
                   <MapPin size={18} className="mt-1 flex-shrink-0" />
-                  <span className="text-sm">123 Aviation Hub, Terminal 2, New Delhi - 110037, India</span>
+                  <span className="text-sm">Plot no. D-77, D-Block, Sector 63, Noida Uttar Pradesh 201309</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Phone size={18} />
@@ -100,6 +100,18 @@ const Footer = () => {
                 <li className="flex items-center gap-2">
                   <Mail size={18} />
                   <span className="text-sm">info@aviationtravel.com</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Mail size={18} />
+                  <span className="text-sm">job@aviationtravel.com</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Mail size={18} />
+                  <span className="text-sm">hr@aviationtravel.com</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Mail size={18} />
+                  <span className="text-sm">admission@aviationtravel.com</span>
                 </li>
               </ul>
             </div>

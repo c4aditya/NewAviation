@@ -33,7 +33,7 @@ const ContactUs = () => {
     {
       icon: MapPin,
       title: 'Visit Us',
-      details: ['Plot no. 77, D Block, Sector 63,  Uttar Pradesh 201309'],
+      details: ['Plot no. D-77, D-Block, Sector 63, Noida Uttar Pradesh 201309'],
       color: 'blue'
     },
     {
@@ -45,7 +45,7 @@ const ContactUs = () => {
     {
       icon: Mail,
       title: 'Email Us',
-      details: ['support@anantairways.com', "admission@anantairways.com", "hr@anantairways.com"],
+      details: ['support@anantairways.com', "admission@anantairways.com", "hr@anantairways.com", "job@anantairways.com"],
       color: 'orange'
     },
     {

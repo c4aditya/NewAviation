@@ -17,6 +17,10 @@ import Career from './pages/Career';
 import JobDetail from './pages/JobDetail';
 import Caution from './pages/Caution';
 import AviationJob from './pages/AviationJob';
+import PackagesPolicy from './pages/PackagesPolicy';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import RefundPolicy from './pages/RefundPolicy';
+import TermsConditions from './pages/TermsConditions';
 
 function App() {
   const location = useLocation();
@@ -42,6 +46,10 @@ function App() {
           <Route path="/career/:jobId" element={<JobDetail />} />
           <Route path="/caution" element={<Caution />} />
           <Route path="/aviation-job" element={<AviationJob />} />
+          <Route path="/packages-policy" element={<PackagesPolicy />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/refund-policy" element={<RefundPolicy />} />
+          <Route path="/terms-conditions" element={<TermsConditions />} />
         </Routes>
       </main>
 

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Plane, Menu, X, Phone, Mail } from 'lucide-react';
-
+import './main.css';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
@@ -46,17 +46,13 @@ const Navbar = () => {
       {/* Main Navbar */}
       <nav className="bg-white shadow-lg sticky top-0 z-50">
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center py-4">
+          <div className="flex justify-between items-center py-4 ">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2 group">
-              <div className="bg-blue-600 p-2 rounded-lg group-hover:bg-blue-700 transition-colors">
-                <Plane className="text-white" size={28} />
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold text-blue-600">Anant Airways</h1>
-                <p className="text-xs text-gray-600">Flight & Travel Partner</p>
-              </div>
-            </Link>
+            <div className='main-logo'>
+              <Link to="/">
+                <img src="https://pub-fad5bb8905db40d28f8096005388a2f1.r2.dev/WhatsApp_Image_2026-03-21_at_2.25.45_PM-removebg-preview.png" alt="Logo" className="w-24 h-auto" />
+              </Link>
+            </div>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-6">

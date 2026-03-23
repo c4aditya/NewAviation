@@ -60,6 +60,26 @@ const AboutUs = () => {
         </div>
       </section>
 
+      {/* Our Journey */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl font-bold text-gray-800 mb-6 text-center">Our Journey – Anant Airways</h2>
+            <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
+              <p>
+                Anant Airways embarked on its path with a clear mission: to deliver dependable, customer-centric aviation and travel experiences. From our modest beginnings, we have evolved into an industry-trusted partner by steadfastly maintaining service quality and nurturing lasting relationships with our passengers.
+              </p>
+              <p>
+                Throughout the years, we have broadened our portfolio and refined our operations to meticulously address the dynamic demands of modern travelers. Our ongoing journey is fueled by a passion for continuous innovation, unwavering dedication, and a resolute pursuit of excellence.
+              </p>
+              <p>
+                As we look to the future, our focus remains on pioneering new ways to make travel progressively more accessible, genuinely efficient, and deeply satisfying for adventurers and professionals alike.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Company Story */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -158,6 +178,85 @@ const AboutUs = () => {
                   <div className="w-5/12"></div>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3 Custom Image/Text Sections Added */}
+      {/* Custom Section 1 */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center gap-12 max-w-6xl mx-auto">
+            <div className="w-full md:w-1/2 space-y-4">
+              <h2 className="text-3xl font-bold text-gray-800">Bharat Gaurav Ratna Shri Sammaan Council Certificate For Shine Airways</h2>
+              <div className="text-gray-700 leading-relaxed text-lg">
+                <p>
+                  The Bharat Gaurav Ratna Shri Sammaan Council Certificate is a prestigious award aimed at honoring individuals and organization.
+
+                  One can imagine how inspiring it would be for a previously unnoticed achiever to receive national level praise from such powerful figures. This will only strengthen their purpose and will encourage them to do more.
+
+                  The Bharat Gaurav Ratna Shri Award Council has two goals in mind when it confers the Bharat Gaurav Ratna Shri Awards and Lifetime Achievement Awards; identifying and recognizing talented citizens who have contributed incredibly for national development.
+
+                  The Bharat Gaurav Ratna Shri Award Council is extremely pleased to share that the Bharat Gaurav Ratna Shri Awards are supported by eminent personalities, Union Ministers, Members of Parliament, IAS officers, IPS officers, Governors, Chief Ministers.
+
+                  The Bharat Gaurav Ratna Shri Award Council is a non-profit organisation registered with the Delhi Government's National Capital Territory. Approved by the Government of India's NITI Aayog and a member of the Quality Council of India it is also ISO 9001:2015 certified.
+                </p>
+              </div>
+            </div>
+            <div className="w-full md:w-1/2">
+              <img src="https://www.shineairways.com/assets/images/document/travel_shine_airways_certificate_1.jpg" alt="Section 1 placeholder" className="w-full h-auto rounded-lg shadow-md" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Custom Section 2 */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center gap-12 max-w-6xl mx-auto">
+            <div className="w-full md:w-1/2">
+              <img src="https://www.shineairways.com/assets/images/document/travel_shine_airways_certificate_1.jpg" alt="Section 2 placeholder" className="w-full h-auto rounded-lg shadow-md" />
+            </div>
+            <div className="w-full md:w-1/2 space-y-4">
+              <h2 className="text-3xl font-bold text-gray-800">World Human Rights Protection Commission Certificate For Shine Airways.</h2>
+              <div className="text-gray-700 leading-relaxed text-lg">
+                <p>
+                  Shine Airways has always been committed to providing the highest standards of care, dignity, and respect to its passengers and staff. In recognition of these efforts, the World Human Rights Protection Commission (WHRPC) has awarded Shine Airways a prestigious certificate of excellence.
+
+                  The World Human Rights Protection Commission acknowledges organizations that promote fairness, equality, and respect for all individuals. Shine Airways stood out for its strict adherence to human rights principles, ensuring a safe, inclusive, and non-discriminatory environment for travelers and employees alike.
+
+                  This certificate highlights Shine Airways' dedication to supporting equal opportunity, protecting the rights of individuals with disabilities, respecting diverse cultures, and promoting a workplace free from harassment and prejudice.
+
+                  As Shine Airways looks toward the future, the airline remains firmly committed to championing human rights across the aviation industry. This recognition inspires Shine Airways to soar even higher in its mission to deliver service that honors every human being’s rights and freedoms.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Custom Section 3 */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center gap-12 max-w-6xl mx-auto">
+            <div className="w-full md:w-1/2 space-y-4">
+              <h2 className="text-3xl font-bold text-gray-800">Bharat Gaurav Ratna Shri Sammaan Award Certificate For Shine Airways.</h2>
+              <div className="text-gray-700 leading-relaxed text-lg">
+                <p>
+                  Shine Airways has added another feather to its cap by receiving the prestigious Bharat Gaurav Ratna Shri Sammaan Award Certificate. This honor recognizes organizations that have made significant contributions to national pride and excellence across industries.
+
+                  The Bharat Gaurav Ratna Shri Sammaan celebrates those who uphold the values of service, commitment, and innovation. Shine Airways has been acknowledged for its outstanding service in the aviation sector, consistently delivering excellence, safety, and customer satisfaction.
+
+                  This award is a testament to Shine Airways’ dedication to not only offering world-class travel experiences but also promoting India’s reputation for hospitality, professionalism, and human values on a global platform.
+
+                  As Shine Airways continues its journey, this award serves as a proud reminder of its mission — to shine brighter every day and to represent the spirit and excellence of India in every flight it operates.
+                </p>
+              </div>
+            </div>
+            <div className="w-full md:w-1/2">
+              <img src="https://www.shineairways.com/assets/images/document/travel_shine_airways_certificate_1.jpg" alt="Section 3 placeholder" className="w-full h-auto rounded-lg shadow-md" />
             </div>
           </div>
         </div>

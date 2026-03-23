@@ -39,19 +39,19 @@ const ContactUs = () => {
     {
       icon: Phone,
       title: 'Call Us',
-      details: ['+91 1800-123-4567', '+91 98765-43210'],
+      details: ['+91 9560205305'],
       color: 'green'
     },
     {
       icon: Mail,
       title: 'Email Us',
-      details: ['support@anantairways.com', "admission@anantairways.com", "hr@anantairways.com", "job@anantairways.com"],
+      details: ['support@anantairways.com', "admission@anantairways.com", "hr@anantairways.com", "jobs@anantairways.com"],
       color: 'orange'
     },
     {
       icon: Clock,
       title: 'Working Hours',
-      details: ['Mon - Sat: 9:00 AM - 8:00 PM', 'Sunday: 10:00 AM - 6:00 PM'],
+      details: [' 10:00 AM - 6:00 PM'],
       color: 'purple'
     }
   ];

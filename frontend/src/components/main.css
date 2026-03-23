@@ -1,0 +1,20 @@
+.main-logo {
+    display: flex;
+    align-items: center;
+    height: 100%; /* Ensures it aligns with the full height available in the navbar */
+}
+
+.main-logo a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.main-logo img {
+    width: 250px !important;
+    max-height: 55px !important;
+    object-fit: contain;
+    object-position: left center;
+    transform: scale(1.2); /* Visually increases the size without pushing the navbar taller */
+    transform-origin: left center;
+}

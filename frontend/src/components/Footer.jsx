@@ -31,7 +31,7 @@ const Footer = () => {
       <footer className="bg-gray-900 text-white mt-16">
 
         <div className="container mx-auto px-4 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             {/* Company Info */}
             <div>
               <div className="flex items-center gap-2 mb-4">
@@ -44,7 +44,7 @@ const Footer = () => {
                 </div>
               </div>
               <p className="text-gray-400 text-sm mb-4">
-                At Anant Airways, we are committed to transforming your travel dreams into reality you can do any thing that makes your dream true . The Company is recognizes NCT and MCA certified
+                At Anant Airways, we are committed to transforming your travel dreams into reality you can do any thing that makes your dream true . Namo Airways services pvt. ltd. is recognized NCT and MCA certified
               </p>
               <div className="flex gap-3">
                 <a href="#" className="bg-blue-600 p-2 rounded-full hover:bg-blue-700 transition-colors">
@@ -85,6 +85,17 @@ const Footer = () => {
               </ul>
             </div>
 
+            {/* Company */}
+            <div>
+              <h4 className="text-lg font-bold mb-4">Company</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><Link to="/packages-policy" className="hover:text-white transition-colors">Packages Policy</Link></li>
+                <li><Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+                <li><Link to="/refund-policy" className="hover:text-white transition-colors">Refund Policy</Link></li>
+                <li><Link to="/terms-conditions" className="hover:text-white transition-colors">Terms and Conditions</Link></li>
+              </ul>
+            </div>
+
             {/* Contact Info */}
             <div>
               <h4 className="text-lg font-bold mb-4">Contact Us</h4>
@@ -95,24 +106,18 @@ const Footer = () => {
                 </li>
                 <li className="flex items-center gap-2">
                   <Phone size={18} />
-                  <span className="text-sm">+91 1800-123-4567</span>
+                  <span className="text-sm">+91 9560205305</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail size={18} />
-                  <span className="text-sm">info@aviationtravel.com</span>
+                  <span className="text-sm">info@anantairways.com</span>
                 </li>
+
                 <li className="flex items-center gap-2">
                   <Mail size={18} />
-                  <span className="text-sm">job@aviationtravel.com</span>
+                  <span className="text-sm">hr@anantairways.com</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <Mail size={18} />
-                  <span className="text-sm">hr@aviationtravel.com</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Mail size={18} />
-                  <span className="text-sm">admission@aviationtravel.com</span>
-                </li>
+
               </ul>
             </div>
           </div>

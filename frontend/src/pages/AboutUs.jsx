@@ -190,21 +190,18 @@ const AboutUs = () => {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Bharat Gaurav Ratna Shri Sammaan Council Certificate For Shine Airways</h2>
             <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
-              <p>
-                The Bharat Gaurav Ratna Shri Sammaan Council Certificate is a prestigious award aimed at honoring individuals and organization.
+              <p>The Bharat Gaurav Ratna Shri Sammaan Council Certificate is recognized as one of the most distinguished honors conferred upon individuals and organizations for their outstanding achievements and meaningful contributions in their respective fields. This recognition serves as a powerful symbol of excellence, dedication, and commitment, encouraging recipients to continue striving for greater impact and success.
+
+                Such national-level recognition plays a significant role in motivating organizations and individuals who have worked consistently with passion and integrity. Being acknowledged on such a prestigious platform not only enhances credibility but also inspires continued innovation and growth.
+
+                Anant Airways, a proud subsidiary of Namo Airways Private Limited, has been honored with the esteemed Bharat Gaurav Ratna Shri Sammaan Council Certificate. This achievement reflects the organization’s unwavering commitment to quality, operational excellence, and its growing contribution to the aviation sector. The recognition further strengthens the reputation and legacy of Namo Airways Private Limited as a group committed to delivering exceptional standards across all its ventures.
+
+                The Bharat Gaurav Ratna Shri Award Council takes pride in being associated with several eminent personalities, including Union Ministers, Members of Parliament, senior IAS and IPS officers, as well as Governors and Chief Ministers. Their association adds immense value and credibility to the recognition process.
+
+                Furthermore, the Council operates as a non-profit organization registered under the National Capital Territory of Delhi. It is acknowledged by the Government of India’s NITI Aayog and holds membership with the Quality Council of India. The organization also adheres to internationally recognized quality standards, being ISO 9001:2015 certified, which reinforces its commitment to maintaining transparency, quality, and trust in its initiatives.
               </p>
-              <p>
-                One can imagine how inspiring it would be for a previously unnoticed achiever to receive national level praise from such powerful figures. This will only strengthen their purpose and will encourage them to do more.
-              </p>
-              <p>
-                The Bharat Gaurav Ratna Shri Award Council has two goals in mind when it confers the Bharat Gaurav Ratna Shri Awards and Lifetime Achievement Awards; identifying and recognizing talented citizens who have contributed incredibly for national development.
-              </p>
-              <p>
-                The Bharat Gaurav Ratna Shri Award Council is extremely pleased to share that the Bharat Gaurav Ratna Shri Awards are supported by eminent personalities, Union Ministers, Members of Parliament, IAS officers, IPS officers, Governors, Chief Ministers.
-              </p>
-              <p>
-                The Bharat Gaurav Ratna Shri Award Council is a non-profit organisation registered with the Delhi Government's National Capital Territory. Approved by the Government of India's NITI Aayog and a member of the Quality Council of India it is also ISO 9001:2015 certified.
-              </p>
+
+
             </div>
           </div>
         </div>
@@ -216,17 +213,13 @@ const AboutUs = () => {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">World Human Rights Protection Commission Certificate For Shine Airways.</h2>
             <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
-              <p>
-                Shine Airways has always been committed to providing the highest standards of care, dignity, and respect to its passengers and staff. In recognition of these efforts, the World Human Rights Protection Commission (WHRPC) has awarded Shine Airways a prestigious certificate of excellence.
-              </p>
-              <p>
-                The World Human Rights Protection Commission acknowledges organizations that promote fairness, equality, and respect for all individuals. Shine Airways stood out for its strict adherence to human rights principles, ensuring a safe, inclusive, and non-discriminatory environment for travelers and employees alike.
-              </p>
-              <p>
-                This certificate highlights Shine Airways' dedication to supporting equal opportunity, protecting the rights of individuals with disabilities, respecting diverse cultures, and promoting a workplace free from harassment and prejudice.
-              </p>
-              <p>
-                As Shine Airways looks toward the future, the airline remains firmly committed to championing human rights across the aviation industry. This recognition inspires Shine Airways to soar even higher in its mission to deliver service that honors every human being’s rights and freedoms.
+              <p>Anant Airways has consistently upheld the highest standards of care, dignity, and respect towards its passengers and employees. This strong commitment to ethical values and responsible service has played a vital role in shaping its identity within the aviation industry. By prioritizing human values alongside operational excellence, the organization continues to build trust and credibility among its stakeholders.
+
+                In recognition of these efforts, Anant Airways was honored in the year 2025 with the prestigious Certificate of Excellence awarded by the World Human Rights Protection Commission (WHRPC). This distinguished recognition reflects the airline’s dedication to promoting fairness, respect, and integrity in all aspects of its operations.
+
+                Namo Airways Private Limited, along with its proud group company Anant Airways, has achieved this significant milestone, further highlighting the group’s unified commitment to service excellence, social responsibility, and ethical practices. The recognition stands as a testament to the shared vision and values that drive both organizations toward continuous growth and excellence.
+
+                This honor not only strengthens the reputation of Anant Airways but also reinforces the legacy of Namo Airways Private Limited as a forward-thinking aviation group dedicated to delivering quality service while upholding human rights and professional standards at every level.
               </p>
             </div>
           </div>
@@ -237,19 +230,13 @@ const AboutUs = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Bharat Gaurav Ratna Shri Sammaan Award Certificate For Shine Airways.</h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Bharat Gaurav Ratna Shri Sammaan Award Certificate For Namo Airways.</h2>
             <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
-              <p>
-                Shine Airways has added another feather to its cap by receiving the prestigious Bharat Gaurav Ratna Shri Sammaan Award Certificate. This honor recognizes organizations that have made significant contributions to national pride and excellence across industries.
-              </p>
-              <p>
-                The Bharat Gaurav Ratna Shri Sammaan celebrates those who uphold the values of service, commitment, and innovation. Shine Airways has been acknowledged for its outstanding service in the aviation sector, consistently delivering excellence, safety, and customer satisfaction.
-              </p>
-              <p>
-                This award is a testament to Shine Airways’ dedication to not only offering world-class travel experiences but also promoting India’s reputation for hospitality, professionalism, and human values on a global platform.
-              </p>
-              <p>
-                As Shine Airways continues its journey, this award serves as a proud reminder of its mission — to shine brighter every day and to represent the spirit and excellence of India in every flight it operates.
+              <p>Anant Airways has achieved another significant milestone by being honored with the prestigious Bharat Gaurav Ratna Shri Sammaan Award Certificate. This distinguished recognition is awarded to organizations that have demonstrated exceptional contributions toward national pride, innovation, and excellence across various industries.
+
+                Namo Airways Private Limited, along with its esteemed group company Anant Airways, has proudly received this honor. This achievement reflects the collective dedication, operational excellence, and forward-thinking approach that define both organizations. It highlights their continuous efforts to elevate standards within the aviation sector while maintaining a strong commitment to quality and service.
+
+                This recognition stands as a testament to the shared vision and legacy of Namo Airways Private Limited and Anant Airways, showcasing their unwavering commitment to innovation, reliability, and excellence. It further reinforces their position as trusted names in the aviation industry, driven by a passion to deliver outstanding experiences and contribute meaningfully to the growth of the sector.
               </p>
             </div>
           </div>

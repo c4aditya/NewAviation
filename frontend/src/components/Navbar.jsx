@@ -1,10 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Plane, Menu, X, Phone, Mail } from 'lucide-react';
 import './main.css';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navigation = [
     { name: 'Home', path: '/' },
@@ -44,13 +54,22 @@ const Navbar = () => {
       </div>
 
       {/* Main Navbar */}
-      <nav className="bg-white shadow-lg sticky top-0 z-50">
+      <nav className={`shadow-lg sticky top-0 z-50 transition-colors duration-500 ease-in-out ${isScrolled ? 'bg-slate-100' : 'bg-white'}`}>
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center py-4 ">
+          <div className="flex justify-between items-center  ">
             {/* Logo */}
             <div className='main-logo'>
-              <Link to="/">
-                <img src="https://pub-fad5bb8905db40d28f8096005388a2f1.r2.dev/WhatsApp_Image_2026-03-21_at_2.25.45_PM-removebg-preview.png" alt="Logo" className="w-24 h-auto" />
+              <Link to="/" className="block w-full h-full">
+                <img 
+                  src="https://pub-fad5bb8905db40d28f8096005388a2f1.r2.dev/AAlogo.png" 
+                  alt="Logo" 
+                  className={`transition-opacity duration-500 ease-in-out ${isScrolled ? 'opacity-0' : 'opacity-100'}`} 
+                />
+                <img 
+                  src="https://pub-fad5bb8905db40d28f8096005388a2f1.r2.dev/Logo.png" 
+                  alt="Logo Scrolled" 
+                  className={`transition-opacity duration-500 ease-in-out ${isScrolled ? 'opacity-100' : 'opacity-0'}`} 
+                />
               </Link>
             </div>
 

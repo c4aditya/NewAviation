@@ -58,6 +58,9 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .main-logo{
+    width: 50%;
+  }
   .slide {
     width: 180px;
   }

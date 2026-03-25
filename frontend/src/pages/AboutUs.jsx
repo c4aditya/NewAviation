@@ -188,7 +188,7 @@ const AboutUs = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Bharat Gaurav Ratna Shri Sammaan Council Certificate For Shine Airways</h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Bharat Gaurav Ratna Shri Sammaan Council Certificate For Anant Airways</h2>
             <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
               <p>The Bharat Gaurav Ratna Shri Sammaan Council Certificate is recognized as one of the most distinguished honors conferred upon individuals and organizations for their outstanding achievements and meaningful contributions in their respective fields. This recognition serves as a powerful symbol of excellence, dedication, and commitment, encouraging recipients to continue striving for greater impact and success.
 
@@ -211,7 +211,7 @@ const AboutUs = () => {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">World Human Rights Protection Commission Certificate For Shine Airways.</h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">World Human Rights Protection Commission Certificate For Anant Airways.</h2>
             <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
               <p>Anant Airways has consistently upheld the highest standards of care, dignity, and respect towards its passengers and employees. This strong commitment to ethical values and responsible service has played a vital role in shaping its identity within the aviation industry. By prioritizing human values alongside operational excellence, the organization continues to build trust and credibility among its stakeholders.
 

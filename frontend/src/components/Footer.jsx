@@ -44,7 +44,7 @@ const Footer = () => {
                 </div>
               </div>
               <p className="text-gray-400 text-sm mb-4">
-                At Anant Airways, we are committed to transforming your travel dreams into reality you can do any thing that makes your dream true . Namo Airways services india pvt. ltd. is recognized BGRSSC and MCA certified
+                At Anant Airways, we are committed to transforming your travel dreams into reality you can do any thing that makes your dream true . Namo Airways services india pvt. ltd. is certified and approved by BGRSSC and MCA.
               </p>
               <div className="flex gap-3">
                 <a href="#" className="bg-blue-600 p-2 rounded-full hover:bg-blue-700 transition-colors">
@@ -110,12 +110,12 @@ const Footer = () => {
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail size={18} />
-                  <span className="text-sm">info@anantairways.com</span>
+                  <span className="text-sm">support@anantairways.in</span>
                 </li>
 
                 <li className="flex items-center gap-2">
                   <Mail size={18} />
-                  <span className="text-sm">hr@anantairways.com</span>
+                  <span className="text-sm">hr@anantairways.in</span>
                 </li>
 
               </ul>

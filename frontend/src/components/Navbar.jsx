@@ -44,7 +44,7 @@ const Navbar = () => {
             </div>
             <div className="flex items-center gap-2">
               <Mail size={16} />
-              <span>info@aviationtravel.com</span>
+              <span>support@anantairways.in</span>
             </div>
           </div>
           <div className="flex gap-4">

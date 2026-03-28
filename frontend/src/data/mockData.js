@@ -660,7 +660,7 @@ export const honeymoonPackages = [
   {
     id: 7,
     title: "Maui Paradise",
-    image: "https://images.unsplash.com/photo-1542259659439-429fee256ce4?w=800&h=600&fit=crop",
+    image: "https://gallery.streamlinevrs.com/stl-default-images/3481/home/1013408/1774287881_thumbnail.jpeg",
     price: "₹2,10,000",
     duration: "8 Days / 7 Nights",
     hotelType: "Oceanfront Resort",

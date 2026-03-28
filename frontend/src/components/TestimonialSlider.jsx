@@ -31,6 +31,15 @@ const TestimonialSlider = ({ testimonials }) => {
         );
     };
 
+    useEffect(() => {
+        const autoScroll = setInterval(() => {
+            setCurrentIndex((prev) =>
+                prev + cardsToShow >= testimonials.length ? 0 : prev + 1
+            );
+        }, 3000);
+        return () => clearInterval(autoScroll);
+    }, [cardsToShow, testimonials.length]);
+
     return (
         <div className="relative max-w-[1400px] mx-auto px-12">
             {/* Navigation Buttons */}

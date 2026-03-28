@@ -190,6 +190,8 @@ const AboutUs = () => {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Bharat Gaurav Ratna Shri Sammaan Council Certificate For Anant Airways</h2>
             <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
+
+              <img src='https://pub-fad5bb8905db40d28f8096005388a2f1.r2.dev/WhatsApp%20Image%202026-03-28%20at%203.25.17%20PM.jpeg'></img>
               <p>The Bharat Gaurav Ratna Shri Sammaan Council Certificate is recognized as one of the most distinguished honors conferred upon individuals and organizations for their outstanding achievements and meaningful contributions in their respective fields. This recognition serves as a powerful symbol of excellence, dedication, and commitment, encouraging recipients to continue striving for greater impact and success.
 
                 Such national-level recognition plays a significant role in motivating organizations and individuals who have worked consistently with passion and integrity. Being acknowledged on such a prestigious platform not only enhances credibility but also inspires continued innovation and growth.
@@ -213,6 +215,7 @@ const AboutUs = () => {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">World Human Rights Protection Commission Certificate For Anant Airways.</h2>
             <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
+              <img src='https://pub-fad5bb8905db40d28f8096005388a2f1.r2.dev/WhatsApp%20Image%202026-03-28%20at%203.32.04%20PM.jpeg' width={"100%"}></img>
               <p>Anant Airways has consistently upheld the highest standards of care, dignity, and respect towards its passengers and employees. This strong commitment to ethical values and responsible service has played a vital role in shaping its identity within the aviation industry. By prioritizing human values alongside operational excellence, the organization continues to build trust and credibility among its stakeholders.
 
                 In recognition of these efforts, Anant Airways was honored in the year 2025 with the prestigious Certificate of Excellence awarded by the World Human Rights Protection Commission (WHRPC). This distinguished recognition reflects the airline’s dedication to promoting fairness, respect, and integrity in all aspects of its operations.
@@ -232,6 +235,7 @@ const AboutUs = () => {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Bharat Gaurav Ratna Shri Sammaan Award Certificate For Namo Airways.</h2>
             <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
+              <img src='https://starairways.in/assets/images/about-img/bharatratan2.jpg' width={"100%"}></img>
               <p>Anant Airways has achieved another significant milestone by being honored with the prestigious Bharat Gaurav Ratna Shri Sammaan Award Certificate. This distinguished recognition is awarded to organizations that have demonstrated exceptional contributions toward national pride, innovation, and excellence across various industries.
 
                 Namo Airways Private Limited, along with its esteemed group company Anant Airways, has proudly received this honor. This achievement reflects the collective dedication, operational excellence, and forward-thinking approach that define both organizations. It highlights their continuous efforts to elevate standards within the aviation sector while maintaining a strong commitment to quality and service.

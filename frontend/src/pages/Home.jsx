@@ -464,7 +464,7 @@ const Home = () => {
           <div className="flex flex-col lg:flex-row-reverse items-center gap-16">
             <div className="lg:w-1/2">
               <div className="relative">
-                <img src="https://images.unsplash.com/photo-1544620359-1917a2a30de4?w=800&h=600&fit=crop" alt="Expert Support" className="rounded-none shadow-2xl w-full object-cover h-[500px]" />
+                <img src="https://pub-fad5bb8905db40d28f8096005388a2f1.r2.dev/front-view-woman-working-desk-while-wearing-headset-looking-laptop.jpg" alt="Expert Support" className="rounded-none shadow-2xl w-full object-cover h-[500px]" />
                 <div className="absolute -top-10 -left-10 bg-blue-600 p-8 text-white hidden md:block">
                   <Headphones size={48} className="mb-4" />
                   <p className="text-2xl font-bold font-inter">24/7 Expert Help</p>

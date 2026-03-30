@@ -162,20 +162,20 @@ const AboutUs = () => {
 
           <div className="max-w-4xl mx-auto">
             <div className="relative">
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-aviation-primary border-main"></div>
+              <div className="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-1 h-full bg-aviation-primary border-main"></div>
 
               {milestones.map((milestone, index) => (
-                <div key={index} className={`mb-8 flex ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} items-center`}>
-                  <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
-                    <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                <div key={index} className={`mb-8 flex flex-col md:flex-row ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} md:items-center relative`}>
+                  <div className={`w-full md:w-5/12 pl-14 pr-4 md:px-0 text-left ${index % 2 === 0 ? 'md:text-right md:pr-8' : 'md:text-left md:pl-8'}`}>
+                    <div className="bg-white p-5 md:p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
                       <h3 className="text-2xl font-bold text-aviation-primary mb-2">{milestone.year}</h3>
                       <p className="text-gray-700">{milestone.event}</p>
                     </div>
                   </div>
-                  <div className="w-2/12 flex justify-center">
+                  <div className="absolute top-1/2 left-6 transform -translate-x-1/2 -translate-y-1/2 md:static md:w-2/12 flex justify-center md:top-auto md:left-auto md:translate-x-0 md:translate-y-0">
                     <div className="w-4 h-4 bg-aviation-primary rounded-full border-4 border-white shadow-lg border-main"></div>
                   </div>
-                  <div className="w-5/12"></div>
+                  <div className="hidden md:block w-5/12"></div>
                 </div>
               ))}
             </div>

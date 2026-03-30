@@ -29,7 +29,7 @@ const Caution = () => {
                         <div className="bg-red-50 border-l-4 border-red-500 p-6 my-8">
                             <p className="font-bold text-red-800 mb-2">CRITICAL NOTICE:</p>
                             <p className="text-red-700">
-                                Anant Airways does not charge any fee for interviews, shortlisting, or recruitment processes. Any official communication regarding employment or offer letters will be sent only through our verified Anant Airways email domain (<span className="font-bold underline">hr@anantairways.com</span>).
+                                Anant Airways does not charge any fee for interviews, shortlisting, or recruitment processes. Any official communication regarding employment or offer letters will be sent only through our verified Anant Airways email domain (<span className="font-bold underline">hr@anantairways.in</span>).
                             </p>
                         </div>
                     </div>
@@ -54,7 +54,7 @@ const Caution = () => {
                             </li>
                             <li className="flex items-start gap-3">
                                 <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2.5 flex-shrink-0"></div>
-                                <span>Do ensure that the selection and offer related communication comes only from official Anant Airways email ID (<span className="font-semibold text-blue-600">hr@anantairways.com</span>).</span>
+                                <span>Do ensure that the selection and offer related communication comes only from official Anant Airways email ID (<span className="font-semibold text-blue-600">hr@anantairways.in</span>).</span>
                             </li>
                             <li className="flex items-start gap-3">
                                 <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2.5 flex-shrink-0"></div>
@@ -79,7 +79,7 @@ const Caution = () => {
                             </li>
                             <li className="flex items-start gap-3">
                                 <div className="w-1.5 h-1.5 bg-orange-600 rounded-full mt-2.5 flex-shrink-0"></div>
-                                <span>Do ensure that the selection and offer related communication comes only from official Anant Airways email ID (<span className="font-semibold text-orange-600">hr@anantairways.com</span>).</span>
+                                <span>Do ensure that the selection and offer related communication comes only from official Anant Airways email ID (<span className="font-semibold text-orange-600">hr@anantairways.in</span>).</span>
                             </li>
                             <li className="flex items-start gap-3">
                                 <div className="w-1.5 h-1.5 bg-orange-600 rounded-full mt-2.5 flex-shrink-0"></div>
@@ -96,7 +96,7 @@ const Caution = () => {
                         <Info className="mx-auto mb-6 opacity-50" size={48} />
                         <h2 className="text-2xl md:text-3xl font-bold mb-6 font-inter">Verification Department</h2>
                         <p className="text-blue-100 mb-0 max-w-2xl mx-auto font-inter">
-                            If you have received any suspicious communication, please report it immediately to our official HR channel at <span className="font-bold underline">hr@anantairways.com</span>. Stay safe and alert.
+                            If you have received any suspicious communication, please report it immediately to our official HR channel at <span className="font-bold underline">hr@anantairways.in</span>. Stay safe and alert.
                         </p>
                     </div>
                 </div>

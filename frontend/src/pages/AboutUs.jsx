@@ -192,16 +192,18 @@ const AboutUs = () => {
             <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
 
               <img src='https://pub-fad5bb8905db40d28f8096005388a2f1.r2.dev/WhatsApp%20Image%202026-03-28%20at%203.25.17%20PM.jpeg'></img>
-              <p>The Bharat Gaurav Ratna Shri Sammaan Council Certificate is recognized as one of the most distinguished honors conferred upon individuals and organizations for their outstanding achievements and meaningful contributions in their respective fields. This recognition serves as a powerful symbol of excellence, dedication, and commitment, encouraging recipients to continue striving for greater impact and success.
+           <p>
+            The Bharat Gaurav Ratna Shri Sammaan Council Certificate is recognized as one of the most distinguished honors conferred upon individuals and organizations for their outstanding achievements and meaningful contributions in their respective fields. This recognition serves as a powerful symbol of excellence, dedication, and commitment, encouraging recipients to continue striving for greater impact and success.
 
-                Such national-level recognition plays a significant role in motivating organizations and individuals who have worked consistently with passion and integrity. Being acknowledged on such a prestigious platform not only enhances credibility but also inspires continued innovation and growth.
+Such national-level recognition plays a significant role in motivating organizations and individuals who have worked consistently with passion and integrity. Being acknowledged on such a prestigious platform not only enhances credibility but also inspires continued innovation and growth.
 
-                Anant Airways, a proud subsidiary of Namo Airways Private Limited, has been honored with the esteemed Bharat Gaurav Ratna Shri Sammaan Council Certificate. This achievement reflects the organization’s unwavering commitment to quality, operational excellence, and its growing contribution to the aviation sector. The recognition further strengthens the reputation and legacy of Namo Airways Private Limited as a group committed to delivering exceptional standards across all its ventures.
+Namo Airways Private Limited has been honored with the esteemed Bharat Gaurav Ratna Shri Sammaan Council Certificate. This achievement reflects the organization’s strong commitment to quality, operational excellence, and its growing contribution to the aviation sector. Anant Airways, as a proud subsidiary of Namo Airways Private Limited, continues to grow under its guidance and carries forward the same values and standards. This recognition further strengthens the reputation and legacy of Namo Airways Private Limited as a group committed to delivering high standards across all its ventures.
 
-                The Bharat Gaurav Ratna Shri Award Council takes pride in being associated with several eminent personalities, including Union Ministers, Members of Parliament, senior IAS and IPS officers, as well as Governors and Chief Ministers. Their association adds immense value and credibility to the recognition process.
+The Bharat Gaurav Ratna Shri Award Council takes pride in being associated with several eminent personalities, including Union Ministers, Members of Parliament, senior IAS and IPS officers, as well as Governors and Chief Ministers. Their association adds immense value and credibility to the recognition process.
 
-                Furthermore, the Council operates as a non-profit organization registered under the National Capital Territory of Delhi. It is acknowledged by the Government of India’s NITI Aayog and holds membership with the Quality Council of India. The organization also adheres to internationally recognized quality standards, being ISO 9001:2015 certified, which reinforces its commitment to maintaining transparency, quality, and trust in its initiatives.
-              </p>
+Furthermore, the Council operates as a non-profit organization registered under the National Capital Territory of Delhi. It is acknowledged by the Government of India’s NITI Aayog and holds membership with the Quality Council of India. The organization also follows internationally recognized quality standards and is ISO 9001:2015 certified, which shows its commitment to maintaining transparency, quality, and trust in its initiatives.
+
+           </p>
 
 
             </div>
@@ -216,14 +218,14 @@ const AboutUs = () => {
             <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">World Human Rights Protection Commission Certificate For Anant Airways.</h2>
             <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
               <img src='https://pub-fad5bb8905db40d28f8096005388a2f1.r2.dev/WhatsApp%20Image%202026-03-28%20at%203.32.04%20PM.jpeg' width={"100%"}></img>
-              <p>Anant Airways has consistently upheld the highest standards of care, dignity, and respect towards its passengers and employees. This strong commitment to ethical values and responsible service has played a vital role in shaping its identity within the aviation industry. By prioritizing human values alongside operational excellence, the organization continues to build trust and credibility among its stakeholders.
+              <p>Namo Airways Private Limited has consistently maintained high standards of care, dignity, and respect towards its passengers and employees. This strong commitment to ethical values and responsible service has played an important role in building its identity in the aviation industry. By focusing on human values along with operational excellence, the organization continues to gain trust and credibility among its stakeholders.
 
-                In recognition of these efforts, Anant Airways was honored in the year 2025 with the prestigious Certificate of Excellence awarded by the World Human Rights Protection Commission (WHRPC). This distinguished recognition reflects the airline’s dedication to promoting fairness, respect, and integrity in all aspects of its operations.
+In recognition of these efforts, Namo Airways Private Limited was honored in the year 2025 with the prestigious Certificate of Excellence awarded by the World Human Rights Protection Commission (WHRPC). This recognition reflects the airline’s dedication to fairness, respect, and integrity in all areas of its operations.
 
-                Namo Airways Private Limited, along with its proud group company Anant Airways, has achieved this significant milestone, further highlighting the group’s unified commitment to service excellence, social responsibility, and ethical practices. The recognition stands as a testament to the shared vision and values that drive both organizations toward continuous growth and excellence.
+Anant Airways, as a proud group company, operates under the guidance and strong foundation of Namo Airways Private Limited. This achievement highlights the group’s shared commitment to service quality, social responsibility, and ethical practices. It also shows the common vision and values that drive both organizations towards growth and excellence.
 
-                This honor not only strengthens the reputation of Anant Airways but also reinforces the legacy of Namo Airways Private Limited as a forward-thinking aviation group dedicated to delivering quality service while upholding human rights and professional standards at every level.
-              </p>
+This honor not only strengthens the reputation of Namo Airways Private Limited but also adds value to Anant Airways as part of the group. Together, they continue to move forward as a responsible and forward-thinking aviation group, focused on delivering quality service while maintaining high professional and human standards.
+</p>
             </div>
           </div>
         </div>

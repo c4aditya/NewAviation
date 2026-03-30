@@ -26,11 +26,11 @@
   animation: scroll-reverse 30s linear infinite;
 }
 
-.certificated-images{
+.certificated-images {
   display: flex;
 }
 
-.certificated-images img{
+.certificated-images img {
   width: 150px;
   height: 100px;
   object-fit: contain;
@@ -50,7 +50,7 @@
 
   object-fit: contain;
   border: 1px solid skyblue;
-  
+
 }
 
 .slide img:hover {
@@ -69,9 +69,14 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .main-logo{
+  .certificated-images {
+    flex-direction: column;
+  }
+
+  .main-logo {
     width: 50%;
   }
+
   .slide {
     width: 180px;
   }
@@ -108,6 +113,32 @@
 }
 
 @layer base {
+  :root {
+    --text-scale: 0.95;
+    --heading-scale: 0.85;
+  }
+
+  @media (max-width: 1440px) {
+    :root {
+      --text-scale: 0.9;
+      --heading-scale: 0.8;
+    }
+  }
+
+  @media (max-width: 768px) {
+    :root {
+      --text-scale: 0.85;
+      --heading-scale: 0.7;
+    }
+  }
+
+  @media (max-width: 450px) {
+    :root {
+      --text-scale: 0.8;
+      --heading-scale: 0.6;
+    }
+  }
+
   body {
     font-family: system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;

@@ -125,15 +125,15 @@ const Footer = () => {
           {/* Bottom Bar */}
           <div className="border-t border-gray-700 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
             <div>
-            <p className="text-gray-400 text-sm">
-              © 2026 Anant Airways. All rights reserved.
-            </p>
+              <p className="text-gray-400 text-sm">
+                © 2026 Anant Airways. All rights reserved.
+              </p>
             </div>
 
             <div className='certificated-images'>
               <img src="https://static.wixstatic.com/media/ecb7aa_d008b4f848cb481c8b5374a98fe83798~mv2.png/v1/fill/w_123,h_87,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo%201.png" alt="BGRSSC Certificate" className="h-10 object-contain" />
               <img src="https://static.wixstatic.com/media/ecb7aa_21dd6f7ee17f420b8b6ae8a986427496~mv2.png/v1/fill/w_123,h_87,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo%202.png" alt="BGRSSC Certificate" className="h-10 object-contain" />
-              <img src="https://static.wixstatic.com/media/ecb7aa_1c151aff752b4ee788a5fd5ef3f02ab4~mv2.png/v1/fill/w_123,h_87,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo%203.png"alt="BGRSSC Certificate" className="h-10 object-contain" />
+              <img src="https://static.wixstatic.com/media/ecb7aa_1c151aff752b4ee788a5fd5ef3f02ab4~mv2.png/v1/fill/w_123,h_87,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo%203.png" alt="BGRSSC Certificate" className="h-10 object-contain" />
             </div>
             <div className="flex gap-6 text-sm text-gray-400">
               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>

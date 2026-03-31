@@ -45,7 +45,7 @@ const ContactUs = () => {
     {
       icon: Mail,
       title: 'Email Us',
-      details: ['support@anantairways.com', "admission@anantairways.com", "hr@anantairways.com", "jobs@anantairways.com"],
+      details: ['support@anantairways.in', "admission@anantairways.in", "hr@anantairways.in", "jobs@anantairways.in"],
       color: 'orange'
     },
     {

@@ -87,7 +87,7 @@ const AboutUs = () => {
             <h2 className="text-4xl font-bold text-gray-800 mb-6 text-center">Our Story</h2>
             <div className="space-y-6 text-gray-700  leading-relaxed">
               <p>
-                Founded in 2015, <span className="font-bold text-aviation-primary">Anant Airways</span> was born from a vision to revolutionize the travel booking experience in India. What started as a small team of passionate aviation enthusiasts has grown into one of the country's most trusted travel platforms.
+                Founded in 2025, <span className="font-bold text-aviation-primary">Anant Airways</span> was born from a vision to revolutionize the travel booking experience in India. What started as a small team of passionate aviation enthusiasts has grown into one of the country's most trusted travel platforms.
               </p>
               <p>
                 We understand that travel is more than just reaching a destination—it's about the journey, the experiences, and the memories created along the way. That's why we've dedicated ourselves to making every aspect of travel planning seamless, affordable, and enjoyable.
@@ -218,13 +218,7 @@ Furthermore, the Council operates as a non-profit organization registered under 
             <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">World Human Rights Protection Commission Certificate For Anant Airways.</h2>
             <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
               <img src='https://pub-fad5bb8905db40d28f8096005388a2f1.r2.dev/WhatsApp%20Image%202026-03-28%20at%203.32.04%20PM.jpeg' width={"100%"}></img>
-              <p>Namo Airways Private Limited has consistently maintained high standards of care, dignity, and respect towards its passengers and employees. This strong commitment to ethical values and responsible service has played an important role in building its identity in the aviation industry. By focusing on human values along with operational excellence, the organization continues to gain trust and credibility among its stakeholders.
-
-In recognition of these efforts, Namo Airways Private Limited was honored in the year 2025 with the prestigious Certificate of Excellence awarded by the World Human Rights Protection Commission (WHRPC). This recognition reflects the airline’s dedication to fairness, respect, and integrity in all areas of its operations.
-
-Anant Airways, as a proud group company, operates under the guidance and strong foundation of Namo Airways Private Limited. This achievement highlights the group’s shared commitment to service quality, social responsibility, and ethical practices. It also shows the common vision and values that drive both organizations towards growth and excellence.
-
-This honor not only strengthens the reputation of Namo Airways Private Limited but also adds value to Anant Airways as part of the group. Together, they continue to move forward as a responsible and forward-thinking aviation group, focused on delivering quality service while maintaining high professional and human standards.
+             <p>Private Limited has consistently maintained high standards of care, dignity, and respect towards its passengers and employees. This strong commitment to ethical values and responsible service has played an important role in building its identity in the aviation industry. By focusing on human values along with operational excellence, the organization continues to gain trust and credibility among its stakeholders. In recognition of these efforts, Private Limited was honored in the year 2025 with the prestigious Certificate of Excellence awarded by the World Human Rights Protection Commission (WHRPC). This recognition reflects the airline’s dedication to fairness, respect, and integrity in all areas of its operations. Anant Airways, as a proud group company, operates under the guidance and strong foundation of Private Limited. This achievement highlights the group’s shared commitment to service quality, social responsibility, and ethical practices. It also shows the common vision and values that drive both organizations towards growth and excellence. This honor not only strengthens the reputation of Private Limited but also adds value to Anant Airways as part of the group. Together, they continue to move forward as a responsible and forward-thinking aviation group, focused on delivering quality service while maintaining high professional and human standards.
 </p>
             </div>
           </div>
@@ -238,12 +232,12 @@ This honor not only strengthens the reputation of Namo Airways Private Limited b
             <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Bharat Gaurav Ratna Shri Sammaan Award Certificate For Namo Airways.</h2>
             <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
               <img src='https://starairways.in/assets/images/about-img/bharatratan2.jpg' width={"100%"}></img>
-              <p>Anant Airways has achieved another significant milestone by being honored with the prestigious Bharat Gaurav Ratna Shri Sammaan Award Certificate. This distinguished recognition is awarded to organizations that have demonstrated exceptional contributions toward national pride, innovation, and excellence across various industries.
+             <p>Anant Airways has achieved another significant milestone by being honored with the prestigious Bharat Gaurav Ratna Shri Sammaan Award Certificate. This distinguished recognition is awarded to organizations that have demonstrated exceptional contributions toward national pride, innovation, and excellence across various industries.
 
-                Namo Airways Private Limited, along with its esteemed group company Anant Airways, has proudly received this honor. This achievement reflects the collective dedication, operational excellence, and forward-thinking approach that define both organizations. It highlights their continuous efforts to elevate standards within the aviation sector while maintaining a strong commitment to quality and service.
+Private Limited, along with its esteemed group company Anant Airways, has proudly received this honor. This achievement reflects the collective dedication, operational excellence, and forward-thinking approach that define both organizations. It highlights their continuous efforts to elevate standards within the aviation sector while maintaining a strong commitment to quality and service.
 
-                This recognition stands as a testament to the shared vision and legacy of Namo Airways Private Limited and Anant Airways, showcasing their unwavering commitment to innovation, reliability, and excellence. It further reinforces their position as trusted names in the aviation industry, driven by a passion to deliver outstanding experiences and contribute meaningfully to the growth of the sector.
-              </p>
+This recognition stands as a testament to the shared vision and legacy of Private Limited and Anant Airways, showcasing their unwavering commitment to innovation, reliability, and excellence. It further reinforces their position as trusted names in the aviation industry, driven by a passion to deliver outstanding experiences and contribute meaningfully to the growth of the sector.
+</p>
             </div>
           </div>
         </div>

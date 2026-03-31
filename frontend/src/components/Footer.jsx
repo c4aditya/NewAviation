@@ -44,7 +44,7 @@ const Footer = () => {
                 </div>
               </div>
               <p className="text-gray-400 text-sm mb-4">
-                At Anant Airways, we are committed to transforming your travel dreams into reality you can do any thing that makes your dream true . Namo Airways services india pvt. ltd. is certified and approved by BGRSSC and MCA.
+               At Anant Airways, we are committed to transforming your travel dreams into reality—you can achieve anything that makes your dream come true. We provide honeymoon and travelling packages.
               </p>
               <div className="flex gap-3">
                 <a href="#" className="bg-blue-600 p-2 rounded-full hover:bg-blue-700 transition-colors">

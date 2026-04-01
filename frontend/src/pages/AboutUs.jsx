@@ -229,7 +229,7 @@ Furthermore, the Council operates as a non-profit organization registered under 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Bharat Gaurav Ratna Shri Sammaan Award Certificate For Namo Airways.</h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Bharat Gaurav Ratna Shri Sammaan Award Certificate </h2>
             <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
               <img src='https://starairways.in/assets/images/about-img/bharatratan2.jpg' width={"100%"}></img>
              <p>Anant Airways has achieved another significant milestone by being honored with the prestigious Bharat Gaurav Ratna Shri Sammaan Award Certificate. This distinguished recognition is awarded to organizations that have demonstrated exceptional contributions toward national pride, innovation, and excellence across various industries.

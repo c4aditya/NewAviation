@@ -210,7 +210,7 @@ function Carrer() {
             <p className="text-xl font-bold mb-2">Eager to join our team, but don’t see a role that matches your skills?
             </p>
 
-            <p>Email your resume at <span className="higlight font-bold underline">hr@anantaviation.com</span> and our team will reach out to you.</p>
+            <p>Email your resume at <span className="higlight font-bold underline">hr@anantaviation.in</span> and our team will reach out to you.</p>
         </div>
 
         {/* Our Hiring Process Section - Styled like About Us 'Our Journey' */}

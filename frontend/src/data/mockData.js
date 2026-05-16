@@ -437,7 +437,186 @@ export const destinations = [
       { name: "Ramnagar Fort", description: "18th-century fort across the Ganges" }
     ],
     bestTimeToVisit: "October to March"
-  }
+  },
+  {
+  id: 15,
+  name: "Rishikesh",
+  location: "Uttarakhand, India",
+  image: "https://images.unsplash.com/photo-1627894483216-2138af692e32?w=800&h=600&fit=crop",
+  shortDescription: "Yoga Capital of the World",
+  startingPrice: 8999,
+  packages: 26,
+  rating: 4.7,
+  duration: "3-5 Days",
+  fullDescription: "Rishikesh is a spiritual and adventure destination located on the banks of the Ganges River. It is famous for yoga retreats, river rafting, temples, and peaceful Himalayan surroundings.",
+  specialFeatures: [
+    "River rafting adventures",
+    "Yoga and meditation retreats",
+    "Sacred Ganga Aarti",
+    "Mountain landscapes",
+    "Camping experiences",
+    "Cafes and spiritual vibes"
+  ],
+  popularPlaces: [
+    { name: "Laxman Jhula", description: "Famous suspension bridge" },
+    { name: "Ram Jhula", description: "Iconic river bridge" },
+    { name: "Triveni Ghat", description: "Popular Ganga Aarti spot" },
+    { name: "Neer Garh Waterfall", description: "Beautiful natural waterfall" },
+    { name: "Parmarth Niketan", description: "Well-known yoga ashram" },
+    { name: "Beatles Ashram", description: "Historic meditation center" }
+  ],
+  bestTimeToVisit: "September to April"
+},
+
+{
+  id: 16,
+  name: "Udaipur",
+  location: "Rajasthan, India",
+  image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?w=800&h=600&fit=crop",
+  shortDescription: "City of Lakes",
+  startingPrice: 13999,
+  packages: 24,
+  rating: 4.8,
+  duration: "3-4 Days",
+  fullDescription: "Udaipur is one of Rajasthan’s most romantic cities, known for its lakes, royal palaces, luxury heritage hotels, and scenic beauty.",
+  specialFeatures: [
+    "Beautiful lakes",
+    "Luxury palace hotels",
+    "Royal architecture",
+    "Boat rides",
+    "Traditional markets",
+    "Cultural performances"
+  ],
+  popularPlaces: [
+    { name: "City Palace", description: "Magnificent royal palace complex" },
+    { name: "Lake Pichola", description: "Scenic lake with boat rides" },
+    { name: "Jag Mandir", description: "Historic island palace" },
+    { name: "Saheliyon Ki Bari", description: "Beautiful royal garden" },
+    { name: "Fateh Sagar Lake", description: "Popular tourist lake" },
+    { name: "Bagore Ki Haveli", description: "Cultural heritage haveli" }
+  ],
+  bestTimeToVisit: "October to March"
+},
+
+{
+  id: 17,
+  name: "Darjeeling",
+  location: "West Bengal, India",
+  image: "https://images.unsplash.com/photo-1544634076-0c34d1d1f3b4?w=800&h=600&fit=crop",
+  shortDescription: "Queen of Hills",
+  startingPrice: 12999,
+  packages: 20,
+  rating: 4.6,
+  duration: "4-6 Days",
+  fullDescription: "Darjeeling is a charming hill station famous for tea gardens, toy trains, Himalayan views, and cool weather.",
+  specialFeatures: [
+    "Tea plantations",
+    "Toy train rides",
+    "Mountain scenery",
+    "Colonial architecture",
+    "Peaceful weather",
+    "Local Tibetan culture"
+  ],
+  popularPlaces: [
+    { name: "Tiger Hill", description: "Sunrise point with Kanchenjunga views" },
+    { name: "Batasia Loop", description: "Scenic railway loop" },
+    { name: "Darjeeling Himalayan Railway", description: "UNESCO heritage toy train" },
+    { name: "Peace Pagoda", description: "Peaceful Buddhist monument" },
+    { name: "Tea Estates", description: "Famous Darjeeling tea gardens" },
+    { name: "Rock Garden", description: "Beautiful garden and waterfalls" }
+  ],
+  bestTimeToVisit: "March to May"
+},
+
+{
+  id: 18,
+  name: "Andaman Islands",
+  location: "Andaman & Nicobar Islands, India",
+  image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=600&fit=crop",
+  shortDescription: "Tropical Island Escape",
+  startingPrice: 25999,
+  packages: 18,
+  rating: 4.9,
+  duration: "5-7 Days",
+  fullDescription: "The Andaman Islands are known for crystal-clear beaches, coral reefs, scuba diving, and tropical island beauty.",
+  specialFeatures: [
+    "White sand beaches",
+    "Scuba diving",
+    "Snorkeling adventures",
+    "Island hopping",
+    "Water sports",
+    "Beautiful sunsets"
+  ],
+  popularPlaces: [
+    { name: "Radhanagar Beach", description: "One of Asia's best beaches" },
+    { name: "Havelock Island", description: "Popular island destination" },
+    { name: "Cellular Jail", description: "Historic colonial prison" },
+    { name: "Neil Island", description: "Peaceful tropical island" },
+    { name: "Ross Island", description: "Historic island ruins" },
+    { name: "North Bay Island", description: "Scuba diving spot" }
+  ],
+  bestTimeToVisit: "October to May"
+},
+
+{
+  id: 19,
+  name: "Shillong",
+  location: "Meghalaya, India",
+  image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&h=600&fit=crop",
+  shortDescription: "Scotland of the East",
+  startingPrice: 14999,
+  packages: 16,
+  rating: 4.7,
+  duration: "4-5 Days",
+  fullDescription: "Shillong is a beautiful hill station in Northeast India known for waterfalls, green hills, lakes, caves, and pleasant weather.",
+  specialFeatures: [
+    "Beautiful waterfalls",
+    "Green landscapes",
+    "Pleasant climate",
+    "Music and local culture",
+    "Adventure trekking",
+    "Unique northeastern cuisine"
+  ],
+  popularPlaces: [
+    { name: "Umiam Lake", description: "Scenic lake for boating" },
+    { name: "Elephant Falls", description: "Popular multi-level waterfall" },
+    { name: "Shillong Peak", description: "Highest viewpoint in Shillong" },
+    { name: "Ward's Lake", description: "Beautiful city lake" },
+    { name: "Laitlum Canyon", description: "Breathtaking canyon views" },
+    { name: "Don Bosco Museum", description: "Cultural heritage museum" }
+  ],
+  bestTimeToVisit: "September to May"
+},
+
+{
+  id: 20,
+  name: "Hampi",
+  location: "Karnataka, India",
+  image: "https://images.unsplash.com/photo-1566552881560-0be862a7c445?w=800&h=600&fit=crop",
+  shortDescription: "Ancient Ruins City",
+  startingPrice: 10999,
+  packages: 14,
+  rating: 4.8,
+  duration: "2-4 Days",
+  fullDescription: "Hampi is a UNESCO World Heritage Site known for ancient temples, giant boulders, and the ruins of the Vijayanagara Empire.",
+  specialFeatures: [
+    "Ancient temple ruins",
+    "UNESCO heritage sites",
+    "Rock landscapes",
+    "Historic architecture",
+    "Cycling tours",
+    "Sunrise viewpoints"
+  ],
+  popularPlaces: [
+    { name: "Virupaksha Temple", description: "Historic functioning temple" },
+    { name: "Vijaya Vittala Temple", description: "Famous stone chariot temple" },
+    { name: "Lotus Mahal", description: "Unique palace architecture" },
+    { name: "Hampi Bazaar", description: "Historic marketplace" },
+    { name: "Matanga Hill", description: "Sunrise and sunset point" },
+    { name: "Elephant Stables", description: "Royal elephant shelter" }
+  ],
+  bestTimeToVisit: "October to February"
+}
 ];
 
 export const courses = [

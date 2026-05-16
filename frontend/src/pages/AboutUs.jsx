@@ -48,36 +48,32 @@ const AboutUs = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-aviation-primary to-aviation-secondary py-20 text-white background-color">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center animate-fadeInUp">
-            <Plane className="mx-auto mb-6" size={64} />
-            <h1 className="text-5xl font-bold mb-6">About Anant Airways</h1>
-            <p className="text-xl text-blue-100">
-              Leading the aviation and travel industry with innovation, excellence, and customer satisfaction since 2015
-            </p>
-          </div>
-        </div>
-      </section>
+    
 
       {/* Our Journey */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold text-gray-800 mb-6 text-center">Our Journey – Anant Airways</h2>
-            <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
-              <p>
-                Anant Airways embarked on its path with a clear mission: to deliver dependable, customer-centric aviation and travel experiences. From our modest beginnings, we have evolved into an industry-trusted partner by steadfastly maintaining service quality and nurturing lasting relationships with our passengers.
-              </p>
-              <p>
-                Throughout the years, we have broadened our portfolio and refined our operations to meticulously address the dynamic demands of modern travelers. Our ongoing journey is fueled by a passion for continuous innovation, unwavering dedication, and a resolute pursuit of excellence.
-              </p>
-              <p>
-                As we look to the future, our focus remains on pioneering new ways to make travel progressively more accessible, genuinely efficient, and deeply satisfying for adventurers and professionals alike.
-              </p>
-            </div>
+        <section>
+
+        <div className='backgourd-image-with-content-abouts'>
+
+          <div className='content-main responsive-padding'>
+
+            <h1>About Us</h1>
+
+            <p>Discover unforgettable journeys with us—your trusted travel partner for curated destinations, comfortable stays, and seamless holiday experiences across India and beyond</p>
+
+            <button
+              onClick={() => navigate('/contact')}
+              className="mt-10 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-2.5 px-5 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg"
+            >
+              Enquiry
+            </button>
+
           </div>
+
+          <div className='overlay'></div>
+
         </div>
+
       </section>
 
       {/* Company Story */}

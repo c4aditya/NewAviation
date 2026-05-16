@@ -19,11 +19,11 @@ const Navbar = () => {
   const navigation = [
     { name: 'Home', path: '/' },
     { name: 'Destinations', path: '/destinations' },
-    { name: 'Flights', path: '/flights' },
+    // { name: 'Flights', path: '/flights' },
     { name: 'Hotels', path: '/hotels' },
     // { name: 'Buses', path: '/buses' },
     // { name: 'Cabs', path: '/cabs' },
-    { name: 'Academy', path: '/academy' },
+    // { name: 'Academy', path: '/academy' },
     { name: 'About', path: '/about' },
     { name: 'Career', path: '/career' },
 

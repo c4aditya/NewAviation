@@ -78,10 +78,10 @@ const Footer = () => {
             <div>
               <h4 className="text-lg font-bold mb-4">Our Services</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><Link to="/flights" className="hover:text-white transition-colors">Flight Booking</Link></li>
+                {/* <li><Link to="/flights" className="hover:text-white transition-colors">Flight Booking</Link></li> */}
                 <li><Link to="/hotels" className="hover:text-white transition-colors">Hotel Booking</Link></li>
                 <li><Link to="/buses" className="hover:text-white transition-colors">Bus Booking</Link></li>
-                <li><Link to="/cabs" className="hover:text-white transition-colors">Cab Services</Link></li>
+                {/* <li><Link to="/cabs" className="hover:text-white transition-colors">Cab Services</Link></li> */}
               </ul>
             </div>
 

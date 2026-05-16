@@ -59,16 +59,23 @@ const ContactUs = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-aviation-primary to-aviation-secondary py-20 text-white background-color">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center animate-fadeInUp">
-            <MessageSquare className="mx-auto mb-6" size={64} />
-            <h1 className="text-5xl font-bold mb-6">Get In Touch</h1>
-            <p className="text-xl text-blue-100">
-              Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
-            </p>
+         <section>
+
+        <div className='backgourd-image-with-content-contact'>
+
+          <div className='content-main responsive-padding'>
+
+            <h1>Contact Us</h1>
+
+            <p>Discover unforgettable journeys with us—your trusted travel partner for curated destinations, comfortable stays, and seamless holiday experiences across India and beyond</p>
+
+
           </div>
+
+          <div className='overlay side-overlay'></div>
+
         </div>
+
       </section>
 
       {/* Contact Info Cards */}

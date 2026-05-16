@@ -16,3 +16,105 @@
     position: absolute;
    
 }
+
+.backgourd-image-with-content{
+   
+    background-image: url("https://hblimg.mmtcdn.com/content/hubble/img/lakshadweep/mmt/destination/t_trp/m_Lakshadweep_l_580_870.jpg?im=Resize=(500,266)");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    height: 400px;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0,0,0,0.5);
+
+    z-index: 1;
+}
+
+.content-main{
+    position: relative;
+    z-index: 2;
+
+    width: 40%;
+    text-align: center;
+    color: white;
+}
+
+.content-main h1{
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.enquire-btn{
+    border: 2px solid red;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: ;
+}
+
+.backgourd-image-with-content-hotel{
+       background-image: url("https://hblimg.mmtcdn.com/content/hubble/img/lakshadweep/mmt/destination/t_trp/m_Lakshadweep_l_580_870.jpg?im=Resize=(500,266)");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    height: 400px;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.backgourd-image-with-content-abouts{
+    background-image: url("https://images.unsplash.com/photo-1674074793877-0094bbb45c1c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGFib3V0JTIwdXN8ZW58MHx8MHx8fDA%3D");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.backgourd-image-with-content-contact{
+    background-image: url("https://images.unsplash.com/photo-1499159058454-75067059248a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGNvbnRhY3QlMjB1c3xlbnwwfHwwfHx8MA%3D%3D");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.side-overlay{
+    height: 500px;
+}
+    @media screen and (max-width: 768px) {
+        .responsive-padding {
+            width: 80%;
+        }
+
+        .responsive-padding h1 {
+            font-size: 1.5rem;
+        }   
+        
+    }

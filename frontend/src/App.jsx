@@ -21,7 +21,7 @@ import PackagesPolicy from './pages/PackagesPolicy';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import RefundPolicy from './pages/RefundPolicy';
 import TermsConditions from './pages/TermsConditions';
-
+import './index.css';
 function App() {
   const location = useLocation();
 
@@ -37,7 +37,7 @@ function App() {
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/academy" element={<Academy />} />
           <Route path="/hotels" element={<Hotels />} />
-          <Route path="/flights" element={<Flights />} />
+          {/* <Route path="/flights" element={<Flights />} /> */}
           <Route path="/buses" element={<Buses />} />
           <Route path="/cabs" element={<Cabs />} />
           <Route path="/destinations" element={<Destinations />} />

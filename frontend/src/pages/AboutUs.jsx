@@ -70,7 +70,7 @@ const AboutUs = () => {
 
           </div>
 
-          <div className='overlay'></div>
+          <div className='overlay inaboutus'></div>
 
         </div>
 
@@ -149,7 +149,7 @@ const AboutUs = () => {
       </section>
 
       {/* Milestones */}
-      <section className="py-16 bg-gray-50">
+      {/* <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-800 mb-4">Our Journey</h2>
@@ -177,7 +177,7 @@ const AboutUs = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* 3 Custom Image/Text Sections Added */}
       {/* Custom Section 1 */}

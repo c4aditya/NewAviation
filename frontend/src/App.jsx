@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
 import Academy from './pages/Academy';
+import AcademyDetails from './pages/AcademyDetails';
 import Hotels from './pages/Hotels';
 import Flights from './pages/Flights';
 import Buses from './pages/Buses';
@@ -38,6 +39,7 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/academy" element={<Academy />} />
+          <Route path="/academy/:courseId" element={<AcademyDetails />} />
           <Route path="/hotels" element={<Hotels />} />
           {/* <Route path="/flights" element={<Flights />} /> */}
           <Route path="/buses" element={<Buses />} />

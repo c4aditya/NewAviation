@@ -30,6 +30,7 @@ const Navbar = () => {
   const navigation = [
     { name: 'Home', path: '/' },
     { name: 'Destinations', path: '/destinations' },
+    { name: 'Academy', path: '/academy' },
     { name: 'About', path: '/about' },
     { name: 'Career', path: '/career' },
     { name: 'Contact', path: '/contact' },
@@ -182,6 +183,7 @@ const Navbar = () => {
                 </div>
               </div>
 
+              <Link to="/academy" onClick={() => setIsOpen(false)} className={`py-3 px-4 rounded-xl font-bold transition-all ${isActive('/academy') ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-700 hover:bg-gray-100'}`}>Academy</Link>
               <Link to="/about" onClick={() => setIsOpen(false)} className={`py-3 px-4 rounded-xl font-bold transition-all ${isActive('/about') ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-700 hover:bg-gray-100'}`}>About</Link>
               <Link to="/career" onClick={() => setIsOpen(false)} className={`py-3 px-4 rounded-xl font-bold transition-all ${isActive('/career') ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-700 hover:bg-gray-100'}`}>Career</Link>
               <Link to="/contact" onClick={() => setIsOpen(false)} className={`py-3 px-4 rounded-xl font-bold transition-all ${isActive('/contact') ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-700 hover:bg-gray-100'}`}>Contact</Link>

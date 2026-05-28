@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { GraduationCap, BookOpen, Clock, Award, Check, User, Mail, Phone, MessageSquare } from 'lucide-react';
-import { courses, testimonials } from '../data/mockData';
+import { academyCourses } from '../data/academyData';
+import { testimonials } from '../data/mockData';
 import { useNavigate } from 'react-router-dom';
 const Academy = () => {
   const [selectedCourse, setSelectedCourse] = useState(null);
@@ -41,20 +42,20 @@ const Academy = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-aviation-primary to-aviation-secondary py-20 text-white background-color">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center animate-fadeInUp">
-            <GraduationCap className="mx-auto mb-6" size={64} />
-            <h1 className="text-5xl font-bold mb-6">Anant Airways Academy</h1>
-            <p className="text-xl text-blue-100">
-              Launch your career in aviation with India's premier training academy. Get certified and fly high!
-            </p>
-            <button className="view-op bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition mt-10" onClick={() => Navigate('/aviation-job')}>Aviation Job
+      <section>
+        <div className='backgourd-image-with-content-academy'>
+          <div className='content-main responsive-padding'>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fadeInUp">Our Academy</h1>
+            <p className="text-lg md:text-xl text-blue-100 font-medium mb-6 animate-fadeInUp">Professional Courses & Career Opportunities</p>
+            <button
+              onClick={() => Navigate('/aviation-job')}
+              className="mt-6 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg animate-fadeInUp"
+            >
+              Aviation Job
             </button>
           </div>
-
+          
         </div>
-
       </section>
 
       {/* Academy Overview */}
@@ -116,35 +117,47 @@ const Academy = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {courses.map((course) => (
-              <div key={course.id} className="card p-6 hover:shadow-2xl">
-                <div className="text-5xl mb-4">{course.icon}</div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-3">{course.title}</h3>
-                <p className="text-gray-600 mb-4">{course.description}</p>
-
-                <div className="space-y-2 mb-6">
-                  <div className="flex items-center gap-2 text-sm text-gray-700">
-                    <Clock size={16} className="text-aviation-primary" />
-                    <span><strong>Duration:</strong> {course.duration}</span>
+            {academyCourses.map((course) => {
+              const IconComponent = course.icon;
+              return (
+                <div 
+                  key={course.id} 
+                  className="card group overflow-hidden border border-gray-100 hover:border-blue-100 hover:shadow-2xl transition-all duration-500 cursor-pointer flex flex-col h-full bg-white rounded-2xl"
+                  onClick={() => Navigate(`/academy/${course.id}`)}
+                >
+                  <div className="relative h-56 overflow-hidden">
+                    <img 
+                      src={course.image} 
+                      alt={course.title} 
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                    />
+                    <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm p-3 rounded-xl shadow-md text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                      <IconComponent size={24} />
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-700">
-                    <BookOpen size={16} className="text-aviation-primary" />
-                    <span><strong>Eligibility:</strong> {course.eligibility}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-700">
-                    <Award size={16} className="text-aviation-primary" />
-                    <span><strong>Fees:</strong> {course.fees}</span>
+                  <div className="p-6 flex-grow flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">
+                        {course.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                        {course.shortDesc}
+                      </p>
+                    </div>
+                    
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        Navigate(`/academy/${course.id}`);
+                      }}
+                      className="w-full py-3 rounded-xl font-bold border-2 border-blue-600 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-lg shadow-blue-100"
+                    >
+                      Explore Course
+                    </button>
                   </div>
                 </div>
-
-                <button
-                  onClick={() => handleEnquiry(course)}
-                  className="w-full btn-primary"
-                >
-                  Enquire Now
-                </button>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

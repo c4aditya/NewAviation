@@ -30,7 +30,7 @@ const Footer = () => {
       </div>
       <footer className="bg-gray-900 text-white mt-16">
 
-        <div className="container mx-auto px-4 py-12">
+        <div className="container  mx-auto px-4 py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             {/* Company Info */}
             <div>
@@ -44,7 +44,7 @@ const Footer = () => {
                 </div>
               </div>
               <p className="text-gray-400 text-sm mb-4">
-               At Anant Airways, we are committed to transforming your travel dreams into reality—you can achieve anything that makes your dream come true. We provide honeymoon and travelling packages.
+                At Anant Airways, we are committed to transforming your travel dreams into reality—you can achieve anything that makes your dream come true. We provide honeymoon and travelling packages.
               </p>
               <div className="flex gap-3">
                 <a href="#" className="bg-blue-600 p-2 rounded-full hover:bg-blue-700 transition-colors">
@@ -63,7 +63,8 @@ const Footer = () => {
             </div>
 
             {/* Quick Links */}
-            <div>
+
+            <div className='footer-mobile'>
               <h4 className="text-lg font-bold mb-4">Quick Links</h4>
               <ul className="space-y-2 text-gray-400">
                 <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
@@ -93,6 +94,7 @@ const Footer = () => {
                 <li><Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
                 <li><Link to="/refund-policy" className="hover:text-white transition-colors">Refund Policy</Link></li>
                 <li><Link to="/terms-conditions" className="hover:text-white transition-colors">Terms and Conditions</Link></li>
+                <li><Link to="/faq" className="hover:text-white transition-colors text-blue-400 font-semibold tracking-wide">FAQ</Link></li>
               </ul>
             </div>
 
@@ -122,26 +124,28 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Bottom Bar */}
-          <div className="border-t border-gray-700 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div>
-              <p className="text-gray-400 text-sm">
-                © 2026 Anant Airways. All rights reserved.
-              </p>
-            </div>
+        </div>
 
-            <div className='certificated-images'>
-              <img src="https://static.wixstatic.com/media/ecb7aa_d008b4f848cb481c8b5374a98fe83798~mv2.png/v1/fill/w_123,h_87,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo%201.png" alt="BGRSSC Certificate" className="h-10 object-contain" />
-              <img src="https://static.wixstatic.com/media/ecb7aa_21dd6f7ee17f420b8b6ae8a986427496~mv2.png/v1/fill/w_123,h_87,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo%202.png" alt="BGRSSC Certificate" className="h-10 object-contain" />
-              <img src="https://static.wixstatic.com/media/ecb7aa_1c151aff752b4ee788a5fd5ef3f02ab4~mv2.png/v1/fill/w_123,h_87,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo%203.png" alt="BGRSSC Certificate" className="h-10 object-contain" />
-            </div>
-            <div className="flex gap-6 text-sm text-gray-400">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
-            </div>
+        {/* Bottom Bar */}
+        <div className="border-t border-gray-700 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div>
+            <p className="text-gray-400 text-sm">
+              © 2026 Anant Airways. All rights reserved.
+            </p>
+          </div>
+
+          <div className='certificated-images'>
+            <img src="https://static.wixstatic.com/media/ecb7aa_d008b4f848cb481c8b5374a98fe83798~mv2.png/v1/fill/w_123,h_87,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo%201.png" alt="BGRSSC Certificate" className="h-10 object-contain" />
+            <img src="https://static.wixstatic.com/media/ecb7aa_21dd6f7ee17f420b8b6ae8a986427496~mv2.png/v1/fill/w_123,h_87,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo%202.png" alt="BGRSSC Certificate" className="h-10 object-contain" />
+            <img src="https://static.wixstatic.com/media/ecb7aa_1c151aff752b4ee788a5fd5ef3f02ab4~mv2.png/v1/fill/w_123,h_87,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/logo%203.png" alt="BGRSSC Certificate" className="h-10 object-contain" />
+          </div>
+          <div className="flex gap-6 text-sm text-gray-400">
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
           </div>
         </div>
+
       </footer>
     </>
   );

@@ -36,9 +36,11 @@
   object-fit: contain;
   margin-right: 20px;
 }
-.background-color{
+
+.background-color {
   border: 1px solid red !important;
 }
+
 .slide {
   margin-top: 20px;
   display: flex;
@@ -71,9 +73,18 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .certificated-images {
-    flex-direction: column;
+  .certificated-images {}
+
+  .certificated-images img {
+    width: 100px;
+    height: 100px;
   }
+
+
+
+
+
+
 
   .main-logo {
     width: 50%;

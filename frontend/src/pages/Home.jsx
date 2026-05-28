@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import {
   Plane, Hotel, Bus, Car, Shield, Clock, Award, Headphones,
@@ -15,6 +15,21 @@ import CabBookingForm from '../components/CabBookingForm';
 const Home = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('flight');
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const heroImages = [
+    "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1600&h=900&fit=crop",
+    "https://images.unsplash.com/photo-1529074963764-98f45c47344b?q=80&w=886&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://plus.unsplash.com/premium_photo-1661962354730-cda54fa4f9f1?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/flagged/photo-1555685460-1d9cf532761b?q=80&w=1073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
 
   const stats = [
     { number: '10+', label: 'Years of Excellence' },
@@ -80,11 +95,7 @@ const Home = () => {
       <section
         className="relative py-16 md:py-24 transition-all duration-700 ease-in-out bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url(${activeTab === 'flight' ? 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1600&h=900&fit=crop' :
-            activeTab === 'hotel' ? 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&h=900&fit=crop' :
-              activeTab === 'bus' ? 'https://images.unsplash.com/photo-1544620359-1917a2a30de4?w=1600&h=900&fit=crop' :
-                'https://images.unsplash.com/photo-1449965408869-eaa8f726abf3?w=1600&h=900&fit=crop'
-            })`
+          backgroundImage: `url(${heroImages[currentImageIndex]})`
         }}
       >
         <div className="absolute inset-0 bg-black/50 transition-opacity duration-700"></div>

@@ -21,6 +21,7 @@ import PackagesPolicy from './pages/PackagesPolicy';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import RefundPolicy from './pages/RefundPolicy';
 import TermsConditions from './pages/TermsConditions';
+import FAQ from './pages/FAQ';
 import './index.css';
 function App() {
   const location = useLocation();
@@ -50,6 +51,7 @@ function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/refund-policy" element={<RefundPolicy />} />
           <Route path="/terms-conditions" element={<TermsConditions />} />
+          <Route path="/faq" element={<FAQ />} />
         </Routes>
       </main>
 

@@ -54,7 +54,7 @@ const Academy = () => {
               Aviation Job
             </button>
           </div>
-          
+          <div className='overlay inaboutus'></div>
         </div>
       </section>
 

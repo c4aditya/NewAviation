@@ -74,7 +74,7 @@ const AboutUs = () => {
 
           </div>
 
-          <div className='overlay inaboutus'></div>
+        
 
         </div>
 

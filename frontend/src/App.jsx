@@ -24,54 +24,85 @@ import RefundPolicy from './pages/RefundPolicy';
 import TermsConditions from './pages/TermsConditions';
 import FAQ from './pages/FAQ';
 import ServiceDetails from './pages/ServiceDetails';
+
+// Import AuthContext and Exam components
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
+import Login from './pages/Exam/Login';
+import Admin from './pages/Exam/Admin';
+import Exam from './pages/Exam/Exam';
+
 import './index.css';
+
 function App() {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
-      <ScrollToTop />
-      <PageTransition />
-      <Navbar />
-      <main className="flex-grow">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/contact" element={<ContactUs />} />
-          <Route path="/academy" element={<Academy />} />
-          <Route path="/academy/:courseId" element={<AcademyDetails />} />
-          <Route path="/hotels" element={<Hotels />} />
-          {/* <Route path="/flights" element={<Flights />} /> */}
-          <Route path="/buses" element={<Buses />} />
-          <Route path="/cabs" element={<Cabs />} />
-          <Route path="/destinations" element={<Destinations />} />
-          <Route path="/destinations/:id" element={<DestinationDetails />} />
-          <Route path="/career" element={<Career />} />
-          <Route path="/career/:jobId" element={<JobDetail />} />
-          <Route path="/caution" element={<Caution />} />
-          <Route path="/aviation-job" element={<AviationJob />} />
-          <Route path="/packages-policy" element={<PackagesPolicy />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/refund-policy" element={<RefundPolicy />} />
-          <Route path="/terms-conditions" element={<TermsConditions />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/services/:serviceId" element={<ServiceDetails />} />
-        </Routes>
-      </main>
+    <AuthProvider>
+      <div className="min-h-screen flex flex-col bg-gray-50">
+        <ScrollToTop />
+        <PageTransition />
+        <Navbar />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/contact" element={<ContactUs />} />
+            <Route path="/academy" element={<Academy />} />
+            <Route path="/academy/:courseId" element={<AcademyDetails />} />
+            <Route path="/hotels" element={<Hotels />} />
+            {/* <Route path="/flights" element={<Flights />} /> */}
+            <Route path="/buses" element={<Buses />} />
+            <Route path="/cabs" element={<Cabs />} />
+            <Route path="/destinations" element={<Destinations />} />
+            <Route path="/destinations/:id" element={<DestinationDetails />} />
+            <Route path="/career" element={<Career />} />
+            <Route path="/career/:jobId" element={<JobDetail />} />
+            <Route path="/caution" element={<Caution />} />
+            <Route path="/aviation-job" element={<AviationJob />} />
+            <Route path="/packages-policy" element={<PackagesPolicy />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/refund-policy" element={<RefundPolicy />} />
+            <Route path="/terms-conditions" element={<TermsConditions />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/services/:serviceId" element={<ServiceDetails />} />
 
-      {/* Sticky Caution Button - Only visible on Career page */}
-      {location.pathname === '/career' && (
-        <button
-          onClick={() => window.location.href = '/caution'}
-          className="fixed bottom-8 right-8 z-[9999] bg-white border-2 border-red-500 text-red-500 px-6 py-3 rounded-lg font-bold hover:bg-red-50 transition shadow-2xl animate-bounce hover:animate-none"
-        >
-          Caution
-        </button>
-      )}
+            {/* Exam Portal Routes */}
+            <Route path="/exam/login" element={<Login />} />
+            <Route
+              path="/exam/admin"
+              element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                  <Admin />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/exam/exam"
+              element={
+                <ProtectedRoute allowedRoles={['user']}>
+                  <Exam />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </main>
 
-      <Footer />
-    </div>
+        {/* Sticky Caution Button - Only visible on Career page */}
+        {location.pathname === '/career' && (
+          <button
+            onClick={() => window.location.href = '/caution'}
+            className="fixed bottom-8 right-8 z-[9999] bg-white border-2 border-red-500 text-red-500 px-6 py-3 rounded-lg font-bold hover:bg-red-50 transition shadow-2xl animate-bounce hover:animate-none"
+          >
+            Caution
+          </button>
+        )}
+
+        <Footer />
+      </div>
+    </AuthProvider>
   );
 }
 
 export default App;
+

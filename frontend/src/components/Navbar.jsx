@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Plane, Menu, X, Phone, Mail, ChevronDown, Hotel, Bus, Car, GraduationCap, Briefcase } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 import './main.css';
 
 const Navbar = () => {
@@ -8,6 +9,12 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const location = useLocation();
+  const { isAuthenticated, role } = useAuth();
+
+  const getExamPath = () => {
+    if (!isAuthenticated) return '/exam/login';
+    return role === 'admin' ? '/exam/admin' : '/exam/exam';
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,6 +41,7 @@ const Navbar = () => {
     { name: 'About Us', path: '/about' },
     { name: 'Career', path: '/career' },
     { name: 'Contact', path: '/contact' },
+    { name: 'Login', path: getExamPath() },
   ];
 
   const isActive = (path) => location.pathname === path;
@@ -66,15 +74,15 @@ const Navbar = () => {
             {/* Logo */}
             <div className='main-logo'>
               <Link to="/" className="block w-full h-full">
-                <img 
-                  src="https://pub-fad5bb8905db40d28f8096005388a2f1.r2.dev/AAlogo.png" 
-                  alt="Logo" 
-                  className={`transition-opacity duration-500 ease-in-out ${isScrolled ? 'opacity-0' : 'opacity-100'}`} 
+                <img
+                  src="https://pub-fad5bb8905db40d28f8096005388a2f1.r2.dev/AAlogo.png"
+                  alt="Logo"
+                  className={`transition-opacity duration-500 ease-in-out ${isScrolled ? 'opacity-0' : 'opacity-100'}`}
                 />
-                <img 
-                  src="https://pub-fad5bb8905db40d28f8096005388a2f1.r2.dev/Logo.png" 
-                  alt="Logo Scrolled" 
-                  className={`transition-opacity duration-500 ease-in-out ${isScrolled ? 'opacity-100' : 'opacity-0'}`} 
+                <img
+                  src="https://pub-fad5bb8905db40d28f8096005388a2f1.r2.dev/Logo.png"
+                  alt="Logo Scrolled"
+                  className={`transition-opacity duration-500 ease-in-out ${isScrolled ? 'opacity-100' : 'opacity-0'}`}
                 />
               </Link>
             </div>
@@ -98,7 +106,7 @@ const Navbar = () => {
               ))}
 
               {/* Services Dropdown */}
-              <div 
+              <div
                 className="relative group"
                 onMouseEnter={() => setIsServicesOpen(true)}
                 onMouseLeave={() => setIsServicesOpen(false)}
@@ -106,7 +114,7 @@ const Navbar = () => {
                 <button className={`flex items-center gap-1 font-semibold transition-colors ${isActive('/services') || isServicesOpen ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'}`}>
                   Services <ChevronDown size={16} className={`transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`} />
                 </button>
-                
+
                 {/* Dropdown Menu */}
                 <div className={`absolute top-full left-0 w-64 bg-white shadow-2xl rounded-xl py-4 transition-all duration-300 origin-top-left ${isServicesOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}>
                   <div className="grid grid-cols-1 gap-2 px-4">
@@ -159,10 +167,10 @@ const Navbar = () => {
             <div className="flex flex-col gap-2">
               <Link to="/" onClick={() => setIsOpen(false)} className={`py-3 px-4 rounded-xl font-bold transition-all ${isActive('/') ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-700 hover:bg-gray-100'}`}>Home</Link>
               <Link to="/destinations" onClick={() => setIsOpen(false)} className={`py-3 px-4 rounded-xl font-bold transition-all ${isActive('/destinations') ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-700 hover:bg-gray-100'}`}>Destinations</Link>
-              
+
               {/* Mobile Services */}
               <div className="border-y border-gray-100 my-1 py-1">
-                <button 
+                <button
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
                   className="w-full flex items-center justify-between py-3 px-4 font-bold text-gray-700 hover:bg-gray-100 rounded-xl"
                 >
@@ -187,6 +195,7 @@ const Navbar = () => {
               <Link to="/about" onClick={() => setIsOpen(false)} className={`py-3 px-4 rounded-xl font-bold transition-all ${isActive('/about') ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-700 hover:bg-gray-100'}`}>About</Link>
               <Link to="/career" onClick={() => setIsOpen(false)} className={`py-3 px-4 rounded-xl font-bold transition-all ${isActive('/career') ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-700 hover:bg-gray-100'}`}>Career</Link>
               <Link to="/contact" onClick={() => setIsOpen(false)} className={`py-3 px-4 rounded-xl font-bold transition-all ${isActive('/contact') ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-700 hover:bg-gray-100'}`}>Contact</Link>
+              <Link to={getExamPath()} onClick={() => setIsOpen(false)} className={`py-3 px-4 rounded-xl font-bold transition-all ${isActive(getExamPath()) ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-700 hover:bg-gray-100'}`}>Exam Portal</Link>
             </div>
           </div>
         </div>

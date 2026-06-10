@@ -9,8 +9,7 @@ const Login = () => {
 
   const [formData, setFormData] = useState({
     anantEmail: '',
-    password: '',
-    userEmail: '',
+    password: '',   
     userPhoneNumber: ''
   });
 
@@ -38,10 +37,10 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { anantEmail, password, userEmail, userPhoneNumber } = formData;
+    const { anantEmail, password,  userPhoneNumber } = formData;
 
-    if (!anantEmail || !password || !userEmail || !userPhoneNumber) {
-      setError('All 4 login fields are required.');
+    if (!anantEmail || !password || !userPhoneNumber) {
+      setError('All 3 login fields are required.');
       return;
     }
 
@@ -92,7 +91,7 @@ const Login = () => {
             {/* anantEmail Field */}
             <div>
               <label htmlFor="anantEmail" className="block text-sm font-semibold text-slate-300 mb-1">
-                Official Airways Email
+                Email
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
@@ -106,6 +105,27 @@ const Login = () => {
                   value={formData.anantEmail}
                   onChange={handleChange}
                   placeholder="exam.taker@anantairways.com"
+                  className="w-full pl-10 pr-4 py-3 bg-slate-900/60 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="userPhoneNumber" className="block text-sm font-semibold text-slate-300 mb-1">
+                 Phone Number
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+                  <Phone size={18} />
+                </div>
+                <input
+                  id="userPhoneNumber"
+                  name="userPhoneNumber"
+                  type="text"
+                  required
+                  value={formData.userPhoneNumber}
+                  onChange={handleChange}
+                  placeholder="9876543210"
                   className="w-full pl-10 pr-4 py-3 bg-slate-900/60 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm"
                 />
               </div>
@@ -134,7 +154,7 @@ const Login = () => {
             </div>
 
             {/* userEmail Field */}
-            <div>
+            {/* <div>
               <label htmlFor="userEmail" className="block text-sm font-semibold text-slate-300 mb-1">
                 Personal Email Address
               </label>
@@ -153,29 +173,10 @@ const Login = () => {
                   className="w-full pl-10 pr-4 py-3 bg-slate-900/60 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm"
                 />
               </div>
-            </div>
+            </div> */}
 
             {/* userPhoneNumber Field */}
-            <div>
-              <label htmlFor="userPhoneNumber" className="block text-sm font-semibold text-slate-300 mb-1">
-                Personal Phone Number
-              </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
-                  <Phone size={18} />
-                </div>
-                <input
-                  id="userPhoneNumber"
-                  name="userPhoneNumber"
-                  type="text"
-                  required
-                  value={formData.userPhoneNumber}
-                  onChange={handleChange}
-                  placeholder="9876543210"
-                  className="w-full pl-10 pr-4 py-3 bg-slate-900/60 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm"
-                />
-              </div>
-            </div>
+            
           </div>
 
           <div>

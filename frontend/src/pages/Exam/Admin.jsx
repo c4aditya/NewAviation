@@ -42,7 +42,7 @@ const Admin = () => {
 
   // New User Form State
   const [newUser, setNewUser] = useState({
-    anantEmail: '',
+  
     password: '',
     userEmail: '',
     userPhoneNumber: ''
@@ -260,7 +260,7 @@ const Admin = () => {
     setError('');
     setSuccess('');
 
-    if (!newUser.anantEmail || !newUser.password || !newUser.userEmail || !newUser.userPhoneNumber) {
+    if ( !newUser.password || !newUser.userEmail || !newUser.userPhoneNumber) {
       setError('All fields are required.');
       return;
     }
@@ -913,17 +913,7 @@ const Admin = () => {
 
             {/* Modal Form */}
             <form onSubmit={handleCreateUserSubmit} className="p-6 space-y-4">
-              <div>
-                <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">Official Anant Email</label>
-                <input
-                  type="email"
-                  required
-                  placeholder="candidate@anantairways.com"
-                  value={newUser.anantEmail}
-                  onChange={(e) => setNewUser({ ...newUser, anantEmail: e.target.value })}
-                  className="w-full px-4 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-sm"
-                />
-              </div>
+            
 
               <div>
                 <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">Temporary Password</label>

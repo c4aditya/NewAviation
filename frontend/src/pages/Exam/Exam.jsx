@@ -42,8 +42,20 @@ const Exam = () => {
     }
   };
 
+  const fetchCompletedExams = async () => {
+    try {
+      const res = await api.get('/exams/completed');
+      if (res.data?.success) {
+        localStorage.setItem('completedExams', JSON.stringify(res.data.data.completedExamIds || []));
+      }
+    } catch (err) {
+      console.error('Failed to load completed exams status:', err);
+    }
+  };
+
   useEffect(() => {
     fetchPublishedExams();
+    fetchCompletedExams();
   }, []);
 
   // Handle Exam selection & Start
@@ -126,20 +138,6 @@ const Exam = () => {
       if (res.data?.success) {
         const resultData = res.data.data;
         setResult(resultData);
-        
-        // Save to local storage for Admin view
-        const newSubmission = {
-          userEmail: user?.userEmail || user?.anantEmail || 'Unknown',
-          examName: activeExam.title,
-          marksObtained: resultData.summary.marksObtained,
-          totalMarks: resultData.summary.totalMarks,
-          percentage: resultData.summary.percentage,
-          status: 'Completed',
-          examId: activeExam._id,
-          date: new Date().toISOString()
-        };
-        const existingSubmissions = JSON.parse(localStorage.getItem('submissions') || '[]');
-        localStorage.setItem('submissions', JSON.stringify([...existingSubmissions, newSubmission]));
         
         // Save completed exam status for user
         const completedExams = JSON.parse(localStorage.getItem('completedExams') || '[]');

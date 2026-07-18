@@ -15,6 +15,7 @@ const Admin = () => {
   // Data lists
   const [exams, setExams] = useState([]);
   const [users, setUsers] = useState([]);
+  const [submissions, setSubmissions] = useState([]);
   
   // UI Loading/Error state
   const [loading, setLoading] = useState(false);
@@ -71,9 +72,20 @@ const Admin = () => {
     }
   };
 
+  const fetchSubmissions = async () => {
+    try {
+      const res = await api.get('/exams/submissions');
+      if (res.data?.success) {
+        setSubmissions(res.data.data.submissions || []);
+      }
+    } catch (err) {
+      setError('Failed to fetch candidate results: ' + err.message);
+    }
+  };
+
   useEffect(() => {
     setLoading(true);
-    Promise.all([fetchExams(), fetchUsers()]).finally(() => setLoading(false));
+    Promise.all([fetchExams(), fetchUsers(), fetchSubmissions()]).finally(() => setLoading(false));
   }, []);
 
   // Actions for Exams
@@ -104,19 +116,33 @@ const Admin = () => {
     }
   };
 
-  const handleDeleteUser = (userId) => {
+  const handleDeleteUser = async (userId) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
-      setUsers(users.filter(u => u._id !== userId));
-      setSuccess("User deleted successfully.");
+      try {
+        setError('');
+        const res = await api.delete(`/auth/users/${userId}`);
+        if (res.data?.success) {
+          setSuccess("User deleted successfully.");
+          fetchUsers();
+        }
+      } catch (err) {
+        setError('Failed to delete user: ' + err.message);
+      }
     }
   };
 
-  const handleDeleteSubmission = (index) => {
+  const handleDeleteSubmission = async (submissionId) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
-      const existing = JSON.parse(localStorage.getItem('submissions') || '[]');
-      existing.splice(index, 1);
-      localStorage.setItem('submissions', JSON.stringify(existing));
-      setSuccess("User deleted successfully.");
+      try {
+        setError('');
+        const res = await api.delete(`/exams/submissions/${submissionId}`);
+        if (res.data?.success) {
+          setSuccess("User deleted successfully.");
+          fetchSubmissions();
+        }
+      } catch (err) {
+        setError('Failed to delete submission: ' + err.message);
+      }
     }
   };
 
@@ -599,70 +625,64 @@ const Admin = () => {
         {/* Tab 3: MARKS PANEL */}
         {!loading && activeTab === 'marks' && (
           <div className="grid grid-cols-1">
-            {(() => {
-              const submissions = JSON.parse(localStorage.getItem('submissions') || '[]');
-              if (submissions.length === 0) {
-                return (
-                  <div className="bg-slate-800/40 border border-slate-800 border-dashed rounded-xl p-12 text-center text-slate-500">
-                    <Award size={48} className="mx-auto mb-4 text-slate-600" />
-                    <p className="text-base font-semibold">No Submissions Yet</p>
-                    <p className="text-sm">Candidate results will appear here once they complete an exam.</p>
-                  </div>
-                );
-              }
-              return (
-                <div className="bg-slate-800/40 border border-slate-700/30 rounded-xl overflow-hidden shadow-xl animate-fadeInUp">
-                  <table className="w-full text-left border-collapse text-sm">
-                    <thead>
-                      <tr className="bg-slate-800/80 border-b border-slate-700/50 text-slate-400 font-semibold uppercase text-xs tracking-wider">
-                        <th className="py-4 px-6">User Email</th>
-                        <th className="py-4 px-6">Exam Name</th>
-                        <th className="py-4 px-6">Marks</th>
-                        <th className="py-4 px-6">Total</th>
-                        <th className="py-4 px-6">Percentage</th>
-                        <th className="py-4 px-6">Status</th>
-                        <th className="py-4 px-6 text-right">Actions</th>
+            {submissions.length === 0 ? (
+              <div className="bg-slate-800/40 border border-slate-800 border-dashed rounded-xl p-12 text-center text-slate-500">
+                <Award size={48} className="mx-auto mb-4 text-slate-600" />
+                <p className="text-base font-semibold">No Submissions Yet</p>
+                <p className="text-sm">Candidate results will appear here once they complete an exam.</p>
+              </div>
+            ) : (
+              <div className="bg-slate-800/40 border border-slate-700/30 rounded-xl overflow-hidden shadow-xl animate-fadeInUp">
+                <table className="w-full text-left border-collapse text-sm">
+                  <thead>
+                    <tr className="bg-slate-800/80 border-b border-slate-700/50 text-slate-400 font-semibold uppercase text-xs tracking-wider">
+                      <th className="py-4 px-6">User Email</th>
+                      <th className="py-4 px-6">Exam Name</th>
+                      <th className="py-4 px-6">Marks</th>
+                      <th className="py-4 px-6">Total</th>
+                      <th className="py-4 px-6">Percentage</th>
+                      <th className="py-4 px-6">Status</th>
+                      <th className="py-4 px-6 text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-800">
+                    {submissions.map((sub) => (
+                      <tr key={sub._id} className="hover:bg-slate-800/20 transition-colors">
+                        <td className="py-4 px-6 font-semibold text-white">
+                          {sub.userEmail}
+                        </td>
+                        <td className="py-4 px-6 text-blue-400 font-medium">
+                          {sub.examName}
+                        </td>
+                        <td className="py-4 px-6 text-emerald-400 font-bold">
+                          {sub.marksObtained}
+                        </td>
+                        <td className="py-4 px-6 text-slate-300 font-bold">
+                          {sub.totalMarks}
+                        </td>
+                        <td className="py-4 px-6 text-slate-300">
+                          {sub.percentage}%
+                        </td>
+                        <td className="py-4 px-6">
+                          <span className="inline-flex items-center gap-1.5 py-1 px-3.5 rounded-full text-xs font-semibold border bg-emerald-500/10 border-emerald-500/30 text-emerald-400">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                            {sub.status}
+                          </span>
+                        </td>
+                        <td className="py-4 px-6 text-right">
+                          <button
+                            onClick={() => handleDeleteSubmission(sub._id)}
+                            className="text-xs font-semibold py-1.5 px-3 bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white border border-red-500/20 rounded-lg transition-all"
+                          >
+                            Delete
+                          </button>
+                        </td>
                       </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-800">
-                      {submissions.map((sub, idx) => (
-                        <tr key={idx} className="hover:bg-slate-800/20 transition-colors">
-                          <td className="py-4 px-6 font-semibold text-white">
-                            {sub.userEmail}
-                          </td>
-                          <td className="py-4 px-6 text-blue-400 font-medium">
-                            {sub.examName}
-                          </td>
-                          <td className="py-4 px-6 text-emerald-400 font-bold">
-                            {sub.marksObtained}
-                          </td>
-                          <td className="py-4 px-6 text-slate-300 font-bold">
-                            {sub.totalMarks}
-                          </td>
-                          <td className="py-4 px-6 text-slate-300">
-                            {sub.percentage}%
-                          </td>
-                          <td className="py-4 px-6">
-                            <span className="inline-flex items-center gap-1.5 py-1 px-3.5 rounded-full text-xs font-semibold border bg-emerald-500/10 border-emerald-500/30 text-emerald-400">
-                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                              {sub.status}
-                            </span>
-                          </td>
-                          <td className="py-4 px-6 text-right">
-                            <button
-                              onClick={() => handleDeleteSubmission(idx)}
-                              className="text-xs font-semibold py-1.5 px-3 bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white border border-red-500/20 rounded-lg transition-all"
-                            >
-                              Delete
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              );
-            })()}
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </div>
         )}
 

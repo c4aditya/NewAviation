@@ -106,13 +106,17 @@ const Admin = () => {
     if (!window.confirm('Are you sure you want to delete this exam?')) return;
     try {
       setError('');
+      console.log(`[FRONTEND] Requesting DELETE /exams/${examId}`);
       const res = await api.delete(`/exams/${examId}`);
       if (res.data?.success) {
+        console.log('[FRONTEND] Delete exam succeeded');
         setSuccess('Exam deleted successfully!');
         fetchExams();
       }
     } catch (err) {
-      setError('Failed to delete exam: ' + err.message);
+      console.error('[FRONTEND DELETE EXAM ERROR]:', err);
+      const errMsg = err.response?.data?.message || err.message;
+      setError('Failed to delete exam: ' + errMsg);
     }
   };
 
@@ -120,13 +124,17 @@ const Admin = () => {
     if (window.confirm("Are you sure you want to delete this user?")) {
       try {
         setError('');
+        console.log(`[FRONTEND] Requesting DELETE /auth/users/${userId}`);
         const res = await api.delete(`/auth/users/${userId}`);
         if (res.data?.success) {
+          console.log('[FRONTEND] Delete user succeeded');
           setSuccess("User deleted successfully.");
           fetchUsers();
         }
       } catch (err) {
-        setError('Failed to delete user: ' + err.message);
+        console.error('[FRONTEND DELETE USER ERROR]:', err);
+        const errMsg = err.response?.data?.message || err.message;
+        setError('Failed to delete user: ' + errMsg);
       }
     }
   };
@@ -135,13 +143,17 @@ const Admin = () => {
     if (window.confirm("Are you sure you want to delete this candidate result submission?")) {
       try {
         setError('');
+        console.log(`[FRONTEND] Requesting DELETE /exams/submissions/${submissionId}`);
         const res = await api.delete(`/exams/submissions/${submissionId}`);
         if (res.data?.success) {
+          console.log('[FRONTEND] Delete submission succeeded');
           setSuccess("Candidate result submission deleted successfully.");
           fetchSubmissions();
         }
       } catch (err) {
-        setError('Failed to delete submission: ' + err.message);
+        console.error('[FRONTEND DELETE SUBMISSION ERROR]:', err);
+        const errMsg = err.response?.data?.message || err.message;
+        setError('Failed to delete submission: ' + errMsg);
       }
     }
   };

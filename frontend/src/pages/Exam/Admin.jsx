@@ -132,12 +132,12 @@ const Admin = () => {
   };
 
   const handleDeleteSubmission = async (submissionId) => {
-    if (window.confirm("Are you sure you want to delete this user?")) {
+    if (window.confirm("Are you sure you want to delete this candidate result submission?")) {
       try {
         setError('');
         const res = await api.delete(`/exams/submissions/${submissionId}`);
         if (res.data?.success) {
-          setSuccess("User deleted successfully.");
+          setSuccess("Candidate result submission deleted successfully.");
           fetchSubmissions();
         }
       } catch (err) {

@@ -29,6 +29,8 @@ import ServiceDetails from './pages/ServiceDetails';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Login from './pages/Exam/Login';
+import ForgotPassword from './pages/Exam/ForgotPassword';
+import ResetPassword from './pages/Exam/ResetPassword';
 import Admin from './pages/Exam/Admin';
 import Exam from './pages/Exam/Exam';
 
@@ -69,6 +71,8 @@ function App() {
 
             {/* Exam Portal Routes */}
             <Route path="/exam/login" element={<Login />} />
+            <Route path="/exam/forgot-password" element={<ForgotPassword />} />
+            <Route path="/exam/reset-password" element={<ResetPassword />} />
             <Route
               path="/exam/admin"
               element={

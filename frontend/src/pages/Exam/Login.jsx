@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { Lock, Mail, Phone, Shield, User, AlertCircle } from 'lucide-react';
 
@@ -133,9 +133,17 @@ const Login = () => {
 
             {/* password Field */}
             <div>
-              <label htmlFor="password" className="block text-sm font-semibold text-slate-300 mb-1">
-                Password
-              </label>
+              <div className="flex items-center justify-between mb-1">
+                <label htmlFor="password" className="block text-sm font-semibold text-slate-300">
+                  Password
+                </label>
+                <Link
+                  to="/exam/forgot-password"
+                  className="text-xs text-blue-400 hover:text-blue-300 font-medium transition-colors"
+                >
+                  Forgot Password?
+                </Link>
+              </div>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
                   <Lock size={18} />

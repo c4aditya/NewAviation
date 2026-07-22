@@ -9,7 +9,7 @@ const Login = () => {
 
   const [formData, setFormData] = useState({
     anantEmail: '',
-    password: '',   
+    password: '',
     userPhoneNumber: ''
   });
 
@@ -37,7 +37,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { anantEmail, password,  userPhoneNumber } = formData;
+    const { anantEmail, password, userPhoneNumber } = formData;
 
     if (!anantEmail || !password || !userPhoneNumber) {
       setError('All 3 login fields are required.');
@@ -112,7 +112,7 @@ const Login = () => {
 
             <div>
               <label htmlFor="userPhoneNumber" className="block text-sm font-semibold text-slate-300 mb-1">
-                 Phone Number
+                Phone Number
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
@@ -184,7 +184,7 @@ const Login = () => {
             </div> */}
 
             {/* userPhoneNumber Field */}
-            
+
           </div>
 
           <div>

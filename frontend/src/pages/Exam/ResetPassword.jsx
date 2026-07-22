@@ -119,9 +119,8 @@ const ResetPassword = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="exam.taker@anantairways.com"
                   readOnly={Boolean(location.state?.email)}
-                  className={`w-full pl-10 pr-4 py-3 bg-slate-900/60 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm ${
-                    location.state?.email ? 'opacity-70 cursor-not-allowed' : ''
-                  }`}
+                  className={`w-full pl-10 pr-4 py-3 bg-slate-900/60 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm ${location.state?.email ? 'opacity-70 cursor-not-allowed' : ''
+                    }`}
                 />
               </div>
             </div>

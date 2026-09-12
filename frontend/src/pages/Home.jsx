@@ -11,6 +11,7 @@ import FlightBookingForm from '../components/FlightBookingForm';
 import HotelBookingForm from '../components/HotelBookingForm';
 import BusBookingForm from '../components/BusBookingForm';
 import CabBookingForm from '../components/CabBookingForm';
+import TopFlightRoutes from '../components/TopFlightRoutes';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -233,6 +234,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Top Flight Routes Section */}
+      <TopFlightRoutes />
 
       {/* Featured Hotels Section */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">

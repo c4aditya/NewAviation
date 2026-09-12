@@ -53,7 +53,7 @@ function App() {
             <Route path="/academy" element={<Academy />} />
             <Route path="/academy/:courseId" element={<AcademyDetails />} />
             <Route path="/hotels" element={<Hotels />} />
-            {/* <Route path="/flights" element={<Flights />} /> */}
+            <Route path="/flights" element={<Flights />} />
             <Route path="/buses" element={<Buses />} />
             <Route path="/cabs" element={<Cabs />} />
             <Route path="/destinations" element={<Destinations />} />

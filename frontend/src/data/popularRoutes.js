@@ -15,7 +15,7 @@ export const popularRoutes = [
     originIata: 'DEL',
     destinationIata: 'AMD',
     displayCode: 'DEL-AMD',
-    image: 'https://images.unsplash.com/photo-1609946777820-21a48c263d91?w=600&h=400&fit=crop'
+    image: 'https://images.unsplash.com/photo-1588416936097-41850ab3d86d?w=600&h=400&fit=crop'
   },
   {
     id: 'del-lko',

@@ -496,7 +496,7 @@ const Admin = () => {
                                   className="inline-flex items-center gap-1.5 bg-blue-600/20 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/40 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all disabled:opacity-50"
                                 >
                                   <Send size={14} />
-                                  <span>{u.examToken ? 'Resend Exam Link' : 'Send Exam Link'}</span>
+                                  <span>{u.emailSent ? 'Resend Email' : 'Send Email'}</span>
                                 </button>
                               )}
                               <button

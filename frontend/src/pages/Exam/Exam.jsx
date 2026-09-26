@@ -7,7 +7,8 @@ import {
 } from 'lucide-react';
 
 const Exam = () => {
-  const { token } = useParams();
+  const { token: rawToken } = useParams();
+  const token = rawToken ? rawToken.trim().toLowerCase() : '';
 
   // Page States: 'loading' | 'expired' | 'completed' | 'error' | 'login' | 'examTaking' | 'submitted'
   const [pageState, setPageState] = useState('loading');

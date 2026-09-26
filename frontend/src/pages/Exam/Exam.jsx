@@ -1,512 +1,561 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useAuth } from '../../context/AuthContext';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import api from '../../utils/axiosConfig';
 import {
-  Clock, BookOpen, AlertTriangle, ArrowRight, ArrowLeft, LogOut, CheckCircle2,
-  XCircle, Award, RefreshCw, Eye, Sparkles, HelpCircle
+  Clock, AlertTriangle, CheckCircle2, ShieldCheck, ArrowRight, ArrowLeft,
+  Send, AlertCircle, HelpCircle, FileCheck, User
 } from 'lucide-react';
 
 const Exam = () => {
-  const { logout, user } = useAuth();
-  
-  // States
-  const [exams, setExams] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  
-  // Selected active exam details
-  const [activeExam, setActiveExam] = useState(null);
-  const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
-  const [answers, setAnswers] = useState({}); // Stores { questionId: selectedOption }
-  
-  // Timer state
-  const [secondsLeft, setSecondsLeft] = useState(null);
-  const timerRef = useRef(null);
+  const { token } = useParams();
 
-  // Result state
-  const [result, setResult] = useState(null);
+  // Page States: 'loading' | 'expired' | 'completed' | 'error' | 'login' | 'examTaking' | 'submitted'
+  const [pageState, setPageState] = useState('loading');
 
-  // Fetch published exams on load
-  const fetchPublishedExams = async () => {
-    setLoading(true);
-    setError('');
-    try {
-      const res = await api.get('/exams');
-      if (res.data?.success) {
-        setExams(res.data.data.exams || []);
-      }
-    } catch (err) {
-      setError('Failed to load exams: ' + err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // Candidate Data & Questions
+  const [candidateInfo, setCandidateInfo] = useState(null);
+  const [questions, setQuestions] = useState([]);
+  const [errorMsg, setErrorMsg] = useState('');
 
-  const fetchCompletedExams = async () => {
-    try {
-      const res = await api.get('/exams/completed');
-      if (res.data?.success) {
-        localStorage.setItem('completedExams', JSON.stringify(res.data.data.completedExamIds || []));
-      }
-    } catch (err) {
-      console.error('Failed to load completed exams status:', err);
-    }
-  };
+  // Candidate Entrance / Login Form (Email, Phone Number, Name)
+  const [loginForm, setLoginForm] = useState({
+    email: '',
+    phone: '',
+    name: ''
+  });
+  const [loginError, setLoginError] = useState('');
+  const [starting, setStarting] = useState(false);
 
+  // Exam Taking State
+  const [currentIdx, setCurrentIdx] = useState(0);
+  const [answers, setAnswers] = useState({}); // { [questionId]: selectedOption }
+  const [submitting, setSubmitting] = useState(false);
+
+  // 35-Minute Countdown Timer State (2100 seconds)
+  const [timeLeft, setTimeLeft] = useState(2100);
+  const [autoSubmitted, setAutoSubmitted] = useState(false);
+
+  // Initial Load: Verify Token & Initialize 35-minute countdown from link opening
   useEffect(() => {
-    fetchPublishedExams();
-    fetchCompletedExams();
-  }, []);
-
-  // Handle Exam selection & Start
-  const handleStartExam = async (exam) => {
-    setLoading(true);
-    setError('');
-    try {
-      // Fetch full details of single exam (e.g. to ensure clean load and check status)
-      const res = await api.get(`/exams/${exam._id}`);
-      if (res.data?.success) {
-        const fullExam = res.data.data.exam;
-        
-        // Sort questions: descriptive first, then mcq to create sections
-        const sortedQuestions = [...fullExam.questions].sort((a, b) => {
-          const typeA = a.type || 'mcq';
-          const typeB = b.type || 'mcq';
-          if (typeA === 'descriptive' && typeB === 'mcq') return -1;
-          if (typeA === 'mcq' && typeB === 'descriptive') return 1;
-          return 0;
-        });
-        fullExam.questions = sortedQuestions;
-
-        setActiveExam(fullExam);
-        setAnswers({});
-        setSecondsLeft(fullExam.durationInMinutes * 60);
-        setResult(null);
-      }
-    } catch (err) {
-      setError('Could not start exam: ' + err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Timer countdown hook
-  useEffect(() => {
-    if (activeExam && secondsLeft !== null) {
-      if (secondsLeft <= 0) {
-        setSecondsLeft(null);
-        handleAutoSubmit();
-        return;
-      }
-      timerRef.current = setTimeout(() => {
-        setSecondsLeft(prev => prev - 1);
-      }, 1000);
+    if (!token) {
+      setPageState('error');
+      setErrorMsg('No exam token provided in URL.');
+      return;
     }
 
-    return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
+    let endTime = localStorage.getItem(`exam_end_time_${token}`);
+    if (!endTime) {
+      endTime = (Date.now() + 35 * 60 * 1000).toString();
+      localStorage.setItem(`exam_end_time_${token}`, endTime);
+    }
+
+    const checkToken = async () => {
+      setPageState('loading');
+      setErrorMsg('');
+
+      try {
+        const res = await api.get(`/exam/${token}`);
+        if (res.data?.success) {
+          setPageState('login');
+        }
+      } catch (err) {
+        const message = err.message || 'Failed to validate exam link';
+        if (message.toLowerCase().includes('expired')) {
+          setPageState('expired');
+        } else if (message.toLowerCase().includes('already')) {
+          setPageState('completed');
+        } else {
+          setPageState('error');
+          setErrorMsg(message);
+        }
+      }
     };
-  }, [activeExam, secondsLeft]);
 
-  // Format timer text
-  const formatTime = (secs) => {
-    const minutes = Math.floor(secs / 60);
-    const remainingSeconds = secs % 60;
-    return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+    checkToken();
+  }, [token]);
+
+  // Automatic Exam Submission on 35-minute timer expiry
+  const handleAutoSubmit = async () => {
+    if (submitting || autoSubmitted) return;
+    setSubmitting(true);
+    setAutoSubmitted(true);
+
+    const formattedAnswers = Object.entries(answers).map(([qId, ans]) => ({
+      questionId: qId,
+      answer: ans
+    }));
+
+    try {
+      await api.post(`/exam/${token}/submit`, {
+        email: loginForm.email,
+        phone: loginForm.phone,
+        name: loginForm.name,
+        answers: formattedAnswers
+      });
+    } catch (err) {
+      console.error('Auto submission request error:', err.message);
+    } finally {
+      setSubmitting(false);
+      setPageState('autoSubmitted');
+    }
   };
 
-  const handleSelectAnswer = (questionId, option) => {
-    setAnswers(prev => ({
+  // Timer interval effect while candidate is taking exam
+  useEffect(() => {
+    if (pageState !== 'examTaking' || autoSubmitted) return;
+
+    const storedEnd = localStorage.getItem(`exam_end_time_${token}`);
+    const endTime = storedEnd ? parseInt(storedEnd, 10) : Date.now() + 35 * 60 * 1000;
+
+    const timer = setInterval(() => {
+      const remaining = Math.max(0, Math.floor((endTime - Date.now()) / 1000));
+      setTimeLeft(remaining);
+
+      if (remaining <= 0) {
+        clearInterval(timer);
+        handleAutoSubmit();
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [pageState, autoSubmitted, token, answers, loginForm]);
+
+  // Helper function to format time MM:SS
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+  };
+
+  // Handle Candidate Login & Start Exam Immediately (Phone match removed)
+  const handleStartExam = async (e) => {
+    e.preventDefault();
+    if (!loginForm.email || !loginForm.name) {
+      setLoginError('Email and Name are required.');
+      return;
+    }
+
+    setStarting(true);
+    setLoginError('');
+
+    try {
+      const res = await api.post(`/exam/${token}/start`, loginForm);
+      if (res.data?.success) {
+        const { user, questions: fetchedQuestions } = res.data.data;
+        setCandidateInfo(user);
+        setQuestions(fetchedQuestions || []);
+        // Immediately start exam (render questions directly)
+        setPageState('examTaking');
+      }
+    } catch (err) {
+      setLoginError(err.message || 'User details do not match the exam invitation.');
+    } finally {
+      setStarting(false);
+    }
+  };
+
+  // Select Option or Write Answer
+  const handleSelectOption = (questionId, option) => {
+    setAnswers((prev) => ({
       ...prev,
       [questionId]: option
     }));
   };
 
-  const formatAnswersPayload = () => {
-    if (!activeExam) return [];
-    return activeExam.questions.map(q => ({
-      questionId: q._id,
-      selectedAnswer: answers[q._id] || '' // Pass empty string if skipped
+  const handleWriteAnswer = (questionId, text) => {
+    setAnswers((prev) => ({
+      ...prev,
+      [questionId]: text
     }));
   };
 
-  const submitExamResults = async (finalPayload) => {
-    setLoading(true);
-    setError('');
-    try {
-      const res = await api.post('/exams/submit', finalPayload);
-      if (res.data?.success) {
-        const resultData = res.data.data;
-        setResult(resultData);
-        
-        // Save completed exam status for user
-        const completedExams = JSON.parse(localStorage.getItem('completedExams') || '[]');
-        if (!completedExams.includes(activeExam._id)) {
-          localStorage.setItem('completedExams', JSON.stringify([...completedExams, activeExam._id]));
-        }
+  // Submit Exam
+  const handleSubmitExam = async () => {
+    if (!window.confirm('Are you sure you want to submit your exam? Answers cannot be changed after submission.')) {
+      return;
+    }
 
-        setActiveExam(null);
-        setSecondsLeft(null);
+    setSubmitting(true);
+    setErrorMsg('');
+
+    // Format answers array
+    const formattedAnswers = Object.entries(answers).map(([qId, ans]) => ({
+      questionId: qId,
+      answer: ans
+    }));
+
+    try {
+      const res = await api.post(`/exam/${token}/submit`, {
+        email: loginForm.email,
+        phone: loginForm.phone,
+        name: loginForm.name,
+        answers: formattedAnswers
+      });
+
+      if (res.data?.success) {
+        setPageState('submitted');
       }
     } catch (err) {
-      setError('Failed to submit exam: ' + err.message);
+      setErrorMsg(err.message || 'Failed to submit exam.');
+      setPageState('error');
     } finally {
-      setLoading(false);
+      setSubmitting(false);
     }
   };
 
-  const handleSubmitClick = () => {
-    const unansweredCount = activeExam.questions.length - Object.keys(answers).length;
-    let confirmMsg = 'Are you sure you want to submit your exam?';
-    if (unansweredCount > 0) {
-      confirmMsg = `You have ${unansweredCount} unanswered questions. ${confirmMsg}`;
-    }
-    if (window.confirm(confirmMsg)) {
-      const payload = {
-        examId: activeExam._id,
-        answers: formatAnswersPayload()
-      };
-      submitExamResults(payload);
-    }
-  };
+  // Render Loading Screen
+  if (pageState === 'loading') {
+    return (
+      <div className="min-h-screen bg-slate-900 flex flex-col items-center justify-center p-4 text-white">
+        <div className="relative w-16 h-16 mb-4">
+          <div className="absolute inset-0 border-4 border-blue-500/20 rounded-full"></div>
+          <div className="absolute inset-0 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+        </div>
+        <p className="text-blue-400 font-medium tracking-wide animate-pulse">Checking Exam Link...</p>
+      </div>
+    );
+  }
 
-  const handleAutoSubmit = () => {
-    alert('Time is over. Exam submitted automatically.');
-    const payload = {
-      examId: activeExam._id,
-      answers: formatAnswersPayload()
-    };
-    submitExamResults(payload);
-  };
+  // Render Expired Screen
+  if (pageState === 'expired') {
+    return (
+      <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-slate-800/90 border border-red-500/30 rounded-3xl p-8 text-center shadow-2xl backdrop-blur-md">
+          <div className="w-16 h-16 bg-red-500/10 border border-red-500/30 rounded-2xl flex items-center justify-center text-red-400 mx-auto mb-4">
+            <Clock size={32} />
+          </div>
+          <h2 className="text-2xl font-bold text-white mb-2">Exam Link Expired</h2>
+          <p className="text-slate-300 text-sm mb-6">
+            Exam link has expired
+          </p>
+          <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-700/60 text-xs text-slate-400">
+            Please contact your administrator to receive a new exam link.
+          </div>
+        </div>
+      </div>
+    );
+  }
 
-  const handleBackToExams = () => {
-    setResult(null);
-    fetchPublishedExams();
-  };
+  // Render Completed / Already Submitted Screen
+  if (pageState === 'completed') {
+    return (
+      <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-slate-800/90 border border-blue-500/30 rounded-3xl p-8 text-center shadow-2xl backdrop-blur-md">
+          <div className="w-16 h-16 bg-blue-500/10 border border-blue-500/30 rounded-2xl flex items-center justify-center text-blue-400 mx-auto mb-4">
+            <CheckCircle2 size={32} />
+          </div>
+          <h2 className="text-2xl font-bold text-white mb-2">Exam Already Submitted</h2>
+          <p className="text-slate-300 text-sm mb-6">
+            This exam has already been submitted.
+          </p>
+          <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-700/60 text-xs text-slate-400">
+            Your result will be shared with you separately by email.
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Render Error Screen
+  if (pageState === 'error') {
+    return (
+      <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-slate-800/90 border border-amber-500/30 rounded-3xl p-8 text-center shadow-2xl">
+          <div className="w-16 h-16 bg-amber-500/10 border border-amber-500/30 rounded-2xl flex items-center justify-center text-amber-400 mx-auto mb-4">
+            <AlertTriangle size={32} />
+          </div>
+          <h2 className="text-2xl font-bold text-white mb-2">Unable to Access Exam</h2>
+          <p className="text-slate-300 text-sm mb-6">
+            {errorMsg || 'Invalid exam link'}
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  // Render User Entrance Form (Email, Phone Number, Name -> Start Exam)
+  if (pageState === 'login') {
+    return (
+      <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-slate-800/90 border border-slate-700/80 rounded-3xl p-8 shadow-2xl backdrop-blur-md">
+          <div className="text-center mb-6">
+            <div className="w-14 h-14 bg-blue-600/20 border border-blue-500/30 rounded-2xl flex items-center justify-center text-blue-400 mx-auto mb-3">
+              <User size={28} />
+            </div>
+            <h2 className="text-2xl font-bold text-white">Anant Airways Exam Portal</h2>
+            <p className="text-xs text-slate-400 mt-1">
+              Enter your User Email and Name to start the exam.
+            </p>
+          </div>
+
+          {loginError && (
+            <div className="mb-4 bg-red-500/10 border border-red-500/30 text-red-400 p-3.5 rounded-xl flex items-center gap-2.5 text-xs">
+              <AlertCircle size={16} className="shrink-0" />
+              <span>{loginError}</span>
+            </div>
+          )}
+
+          <form onSubmit={handleStartExam} className="space-y-4">
+            <div>
+              <label className="block text-xs font-semibold text-slate-300 mb-1">Email</label>
+              <input
+                type="email"
+                required
+                value={loginForm.email}
+                onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
+                placeholder="rahul@gmail.com"
+                className="w-full px-4 py-3 bg-slate-900/80 border border-slate-700 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-slate-300 mb-1">Phone Number (Optional)</label>
+              <input
+                type="text"
+                value={loginForm.phone}
+                onChange={(e) => setLoginForm({ ...loginForm, phone: e.target.value })}
+                placeholder="9876543210"
+                className="w-full px-4 py-3 bg-slate-900/80 border border-slate-700 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-slate-300 mb-1">Name</label>
+              <input
+                type="text"
+                required
+                value={loginForm.name}
+                onChange={(e) => setLoginForm({ ...loginForm, name: e.target.value })}
+                placeholder="Rahul Sharma"
+                className="w-full px-4 py-3 bg-slate-900/80 border border-slate-700 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={starting}
+              className="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold text-sm transition-all shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 mt-2 disabled:opacity-50"
+            >
+              {starting ? (
+                <span>Starting Exam...</span>
+              ) : (
+                <>
+                  <span>Start Exam</span>
+                  <ArrowRight size={18} />
+                </>
+              )}
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+  // Render Submitted Confirmation Screen
+  if (pageState === 'submitted') {
+    return (
+      <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-slate-800/90 border border-emerald-500/30 rounded-3xl p-8 text-center shadow-2xl backdrop-blur-md">
+          <div className="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl flex items-center justify-center text-emerald-400 mx-auto mb-4">
+            <FileCheck size={36} />
+          </div>
+          <h2 className="text-2xl font-bold text-white mb-2">Exam Submitted Successfully</h2>
+          <p className="text-slate-300 text-sm mb-6">
+            Hello <strong className="text-white">{loginForm.name}</strong>, your exam has been submitted successfully.
+          </p>
+          <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-700/60 text-xs text-slate-400 mb-6 leading-relaxed">
+            Thank you for completing the examination. Your result will be shared with you separately.
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Render Auto-Submitted Screen (When 35-minute timer expires)
+  if (pageState === 'autoSubmitted') {
+    return (
+      <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-slate-800/90 border border-amber-500/30 rounded-3xl p-8 text-center shadow-2xl backdrop-blur-md">
+          <div className="w-16 h-16 bg-amber-500/10 border border-amber-500/30 rounded-2xl flex items-center justify-center text-amber-400 mx-auto mb-4">
+            <Clock size={36} />
+          </div>
+          <h2 className="text-2xl font-bold text-white mb-2">Time Expired</h2>
+          <p className="text-slate-300 text-sm mb-6 font-medium leading-relaxed">
+            Time is up. Your exam has been automatically submitted because the 35-minute time limit has ended.
+          </p>
+          <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-700/60 text-xs text-slate-400 leading-relaxed">
+            Your submitted answers have been saved and your results will be shared with you separately.
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Render Exam Questions Screen (Immediately after clicking Start Exam)
+  const currentQ = questions[currentIdx];
+  const isWritten = currentQ && (currentQ.type === 'written' || !currentQ.options || currentQ.options.length === 0);
+  const answeredCount = Object.values(answers).filter(
+    (a) => a !== undefined && a !== null && String(a).trim() !== ''
+  ).length;
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white">
-      {/* Top Header */}
-      <header className="bg-slate-800/80 backdrop-blur border-b border-slate-700/50 sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-blue-600/20 text-blue-500 rounded-lg flex items-center justify-center border border-blue-500/20 font-bold">
-              AA
-            </div>
-            <div>
-              <h1 className="font-extrabold text-lg tracking-tight">Anant Airways</h1>
-              <p className="text-xs text-blue-400">Candidate Examination Portal</p>
-            </div>
+    <div className="min-h-screen bg-slate-900 text-slate-100 font-sans pb-16">
+      {/* Header */}
+      <header className="bg-slate-800/90 border-b border-slate-700 sticky top-0 z-30 backdrop-blur-md">
+        <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+          <div>
+            <h1 className="text-lg font-bold text-white">Anant Airways Examination</h1>
+            <p className="text-xs text-slate-400">Candidate: {loginForm.name}</p>
           </div>
-          <div className="flex items-center gap-4">
-            {activeExam && secondsLeft !== null && (
-              <div className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border text-sm font-mono font-bold tracking-wide ${
-                secondsLeft < 120
-                  ? 'bg-red-500/10 border-red-500/30 text-red-400 animate-pulse'
-                  : 'bg-slate-900/60 border-slate-700 text-slate-300'
-              }`}>
-                <Clock size={16} />
-                <span>{formatTime(secondsLeft)}</span>
-              </div>
-            )}
-            <div className="hidden sm:block text-right">
-              <p className="text-sm font-semibold">{user?.anantEmail}</p>
-              <p className="text-xs text-slate-400 capitalize">{user?.role}</p>
+
+          <div className="flex items-center gap-3">
+            <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-bold transition-all ${
+              timeLeft <= 300
+                ? 'bg-red-500/20 text-red-400 border-red-500/40 animate-pulse'
+                : 'bg-amber-500/20 text-amber-400 border-amber-500/30'
+            }`}>
+              <Clock size={15} />
+              <span>Time Remaining: {formatTime(timeLeft)}</span>
             </div>
-            {!activeExam && (
-              <button
-                onClick={logout}
-                className="p-2 hover:bg-slate-700/50 text-slate-400 hover:text-red-400 rounded-lg transition-colors flex items-center gap-2 text-sm"
-                title="Sign Out"
-              >
-                <LogOut size={18} />
-                <span className="hidden sm:inline">Sign Out</span>
-              </button>
-            )}
+
+            <span className="text-xs font-semibold bg-blue-600/20 text-blue-400 border border-blue-500/30 px-3 py-1.5 rounded-xl">
+              Answered: {answeredCount} / {questions.length}
+            </span>
+
+            <button
+              onClick={handleSubmitExam}
+              disabled={submitting}
+              className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-lg shadow-emerald-600/20 disabled:opacity-50"
+            >
+              <Send size={14} />
+              <span>Submit Exam</span>
+            </button>
           </div>
         </div>
       </header>
 
-      {/* Main Content Area */}
-      <main className="max-w-6xl mx-auto px-4 py-8">
-        
-        {/* Error Alert Box */}
-        {error && (
-          <div className="mb-6 bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-xl flex items-center justify-between gap-3 text-sm animate-fadeInUp">
-            <div className="flex items-center gap-2">
-              <AlertTriangle size={20} className="shrink-0" />
-              <span>{error}</span>
-            </div>
-            <button onClick={() => setError('')} className="hover:text-white">&times;</button>
-          </div>
-        )}
+      {/* Main Container */}
+      <main className="max-w-5xl mx-auto px-4 pt-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
+        {/* Left Column: Question Navigator */}
+        <div className="lg:col-span-1 bg-slate-800/80 p-5 rounded-2xl border border-slate-700/80 h-fit">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Questions</h3>
+          <div className="grid grid-cols-5 gap-2">
+            {questions.map((q, idx) => {
+              const answerVal = answers[q._id];
+              const isAnswered = answerVal !== undefined && answerVal !== null && String(answerVal).trim() !== '';
+              const isCurrent = idx === currentIdx;
 
-        {/* LOADING SCREEN */}
-        {loading && !activeExam && (
-          <div className="py-24 flex flex-col items-center justify-center gap-4">
-            <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-            <p className="text-slate-400 font-semibold animate-pulse">Loading Portal data...</p>
-          </div>
-        )}
-
-        {/* CASE 1: AVAILABLE EXAMS LIST VIEW */}
-        {!loading && !activeExam && !result && (
-          <div className="space-y-6">
-            <div className="bg-slate-800/40 p-6 rounded-2xl border border-slate-700/30 flex items-center justify-between">
-              <div>
-                <h2 className="text-2xl font-extrabold text-white">Welcome back, Crew Member</h2>
-                <p className="text-sm text-slate-400 mt-1">Select an assigned assessment to begin. Ensure a stable internet connection.</p>
-              </div>
-              <button
-                onClick={fetchPublishedExams}
-                className="p-2.5 bg-slate-800 border border-slate-700 rounded-xl hover:bg-slate-700 text-slate-300 hover:text-white transition-colors"
-                title="Refresh Exams List"
-              >
-                <RefreshCw size={18} />
-              </button>
-            </div>
-
-            <h3 className="text-lg font-bold text-blue-400 uppercase tracking-wider">Assigned Assessments</h3>
-
-            {exams.length === 0 ? (
-              <div className="bg-slate-800/20 border border-slate-800 border-dashed rounded-2xl p-16 text-center text-slate-500">
-                <BookOpen size={64} className="mx-auto mb-4 text-slate-700" />
-                <p className="text-lg font-semibold text-slate-400">No active assessments</p>
-                <p className="text-sm">There are no examinations published for your candidate group currently.</p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {exams.map((exam) => (
-                  <div
-                    key={exam._id}
-                    className="bg-slate-800/60 hover:bg-slate-800 border border-slate-700/40 hover:border-blue-500/50 rounded-2xl p-6 transition-all duration-300 shadow-lg hover:shadow-2xl flex flex-col justify-between"
-                  >
-                    <div>
-                      <h4 className="text-xl font-bold text-white mb-2">{exam.title}</h4>
-                      <p className="text-slate-400 text-sm mb-6 line-clamp-3 leading-relaxed">{exam.description}</p>
-                    </div>
-
-                    <div className="space-y-4 pt-4 border-t border-slate-700/50">
-                      <div className="flex justify-between items-center text-sm">
-                        <span className="flex items-center gap-1.5 text-slate-300 font-medium">
-                          <Clock size={16} className="text-slate-500" />
-                          {exam.durationInMinutes} Minutes
-                        </span>
-                        <span className="flex items-center gap-1.5 text-slate-300 font-medium">
-                          <Award size={16} className="text-slate-500" />
-                          {exam.totalMarks} Total Marks
-                        </span>
-                      </div>
-                      
-                      {(() => {
-                        const completedExams = JSON.parse(localStorage.getItem('completedExams') || '[]');
-                        const isCompleted = completedExams.includes(exam._id);
-                        
-                        return isCompleted ? (
-                          <button
-                            disabled
-                            className="w-full py-3 px-4 bg-emerald-600/20 border border-emerald-500/30 text-emerald-400 rounded-xl font-bold transition-all flex items-center justify-center gap-2 cursor-not-allowed"
-                          >
-                            Successfully Done <CheckCircle2 size={18} />
-                          </button>
-                        ) : (
-                          <button
-                            onClick={() => handleStartExam(exam)}
-                            className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-all shadow-md flex items-center justify-center gap-2 hover:-translate-y-0.5 active:translate-y-0"
-                          >
-                            Start Assessment
-                            <ArrowRight size={18} />
-                          </button>
-                        );
-                      })()}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* CASE 2: ACTIVE EXAM MODE */}
-        {activeExam && (
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            
-            {/* Left side: Questions Scroll Board */}
-            <div className="lg:col-span-3 space-y-8 h-[75vh] overflow-y-auto pr-2 custom-scrollbar">
-              
-              {/* SECTION A: Descriptive Questions */}
-              {activeExam.questions.some(q => q.type === 'descriptive') && (
-                <div className="bg-slate-800/70 border border-slate-700/40 rounded-2xl p-6 shadow-xl relative mb-8">
-                  <h2 className="text-2xl font-bold text-white mb-6 border-b border-slate-700 pb-4">SECTION A: Descriptive Questions</h2>
-                  <div className="space-y-10">
-                    {activeExam.questions.map((q, idx) => {
-                      if (q.type !== 'descriptive') return null;
-                      return (
-                        <div key={q._id} id={`question-${idx}`} className="border-b border-slate-700/50 pb-8 last:border-0 last:pb-0">
-                          <div className="flex justify-between items-center mb-4 text-xs font-bold text-slate-400 uppercase tracking-wider">
-                            <span>Question {idx + 1}</span>
-                            <span className="text-blue-400 bg-blue-600/10 py-1 px-3 border border-blue-500/20 rounded-full">
-                              {q.marks} Marks
-                            </span>
-                          </div>
-                          <h3 className="text-xl font-semibold text-white mb-6 leading-relaxed">
-                            {q.question}
-                          </h3>
-                          <textarea
-                            className="w-full h-32 p-4 bg-slate-900/40 border border-slate-700/60 rounded-xl text-white focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all outline-none resize-y"
-                            placeholder="Type your answer here..."
-                            value={answers[q._id] || ''}
-                            onChange={(e) => handleSelectAnswer(q._id, e.target.value)}
-                          ></textarea>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-
-              {/* SECTION B: MCQ Questions */}
-              {activeExam.questions.some(q => q.type !== 'descriptive') && (
-                <div className="bg-slate-800/70 border border-slate-700/40 rounded-2xl p-6 shadow-xl relative">
-                  <h2 className="text-2xl font-bold text-white mb-6 border-b border-slate-700 pb-4">SECTION B: MCQ Questions</h2>
-                  <div className="space-y-10">
-                    {activeExam.questions.map((q, idx) => {
-                      if (q.type === 'descriptive') return null;
-                      return (
-                        <div key={q._id} id={`question-${idx}`} className="border-b border-slate-700/50 pb-8 last:border-0 last:pb-0">
-                          <div className="flex justify-between items-center mb-4 text-xs font-bold text-slate-400 uppercase tracking-wider">
-                            <span>Question {idx + 1}</span>
-                            <span className="text-blue-400 bg-blue-600/10 py-1 px-3 border border-blue-500/20 rounded-full">
-                              {q.marks} Marks
-                            </span>
-                          </div>
-                          <h3 className="text-xl font-semibold text-white mb-6 leading-relaxed">
-                            {q.question}
-                          </h3>
-                          <div className="space-y-3">
-                            {q.options.map((option, oIdx) => {
-                              const isSelected = answers[q._id] === option;
-                              return (
-                                <button
-                                  key={oIdx}
-                                  onClick={() => handleSelectAnswer(q._id, option)}
-                                  className={`w-full text-left p-4 rounded-xl border flex items-center gap-4 transition-all duration-200 group ${
-                                    isSelected
-                                      ? 'bg-blue-600/20 border-blue-500 text-white font-medium shadow-md shadow-blue-500/5'
-                                      : 'bg-slate-900/40 border-slate-700/60 text-slate-300 hover:bg-slate-800/40 hover:border-slate-600'
-                                  }`}
-                                >
-                                  <span className={`w-6 h-6 rounded-lg font-bold text-xs flex items-center justify-center transition-all ${
-                                    isSelected
-                                      ? 'bg-blue-600 text-white shadow-sm'
-                                      : 'bg-slate-800 text-slate-400 group-hover:bg-slate-700 group-hover:text-white'
-                                  }`}>
-                                    {String.fromCharCode(65 + oIdx)}
-                                  </span>
-                                  <span className="text-sm sm:text-base">{option}</span>
-                                </button>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-
-              {/* Navigation Actions Footer */}
-              <div className="flex justify-end items-center mt-6">
+              return (
                 <button
-                  onClick={handleSubmitClick}
-                  disabled={loading}
-                  className="py-3 px-8 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold transition-all shadow-md disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                  key={q._id}
+                  onClick={() => setCurrentIdx(idx)}
+                  className={`h-10 rounded-xl text-xs font-bold transition-all ${
+                    isCurrent
+                      ? 'bg-blue-600 text-white ring-2 ring-blue-400'
+                      : isAnswered
+                      ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40'
+                      : 'bg-slate-900/60 text-slate-400 hover:bg-slate-700'
+                  }`}
                 >
-                  {loading ? (
-                    <>
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                      Submitting...
-                    </>
-                  ) : (
-                    'Submit Exam'
-                  )}
+                  {idx + 1}
                 </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Right Column: Question Card */}
+        <div className="lg:col-span-3 bg-slate-800/80 p-6 sm:p-8 rounded-2xl border border-slate-700/80 shadow-xl">
+          {currentQ && (
+            <div>
+              <div className="flex items-center justify-between gap-4 mb-4">
+                <span className="bg-blue-600/20 text-blue-400 border border-blue-500/30 text-xs font-bold px-3 py-1 rounded-lg">
+                  Question {currentIdx + 1} of {questions.length} ({isWritten ? 'Written' : 'MCQ'})
+                </span>
+                <span className="text-xs font-semibold text-slate-400">
+                  {currentQ.marks} {currentQ.marks === 1 ? 'Mark' : 'Marks'}
+                </span>
               </div>
-            </div>
 
-            {/* Right side: Questions Navigator Panel */}
-            <div className="space-y-6">
-              <div className="bg-slate-800/70 border border-slate-700/40 rounded-2xl p-6 shadow-xl">
-                <h4 className="font-bold text-xs text-slate-400 uppercase tracking-wider mb-4 border-b border-slate-700 pb-2">
-                  Question Palette
-                </h4>
-                
-                <div className="grid grid-cols-5 gap-2.5">
-                  {activeExam.questions.map((q, idx) => {
-                    const isAnswered = answers[q._id] !== undefined && answers[q._id].toString().trim() !== '';
+              <h2 className="text-lg sm:text-xl font-bold text-white mb-6 leading-relaxed">
+                {currentQ.question}
+              </h2>
 
-                    let bgClass = 'bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-800';
-                    if (isAnswered) bgClass = 'bg-emerald-600/20 border-emerald-500 text-emerald-400 font-bold hover:bg-emerald-600/30';
-
+              {isWritten ? (
+                <div className="mb-8">
+                  <label className="block text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wider">
+                    Type Your Answer Below
+                  </label>
+                  <textarea
+                    rows={6}
+                    value={answers[currentQ._id] || ''}
+                    onChange={(e) => handleWriteAnswer(currentQ._id, e.target.value)}
+                    placeholder="Type your detailed answer here..."
+                    className="w-full p-4 bg-slate-900/80 border border-slate-700/80 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all placeholder:text-slate-500 leading-relaxed resize-y"
+                  />
+                </div>
+              ) : (
+                <div className="space-y-3 mb-8">
+                  {currentQ.options?.map((opt, oIdx) => {
+                    const isSelected = answers[currentQ._id] === opt;
                     return (
-                      <button
-                        onClick={() => document.getElementById(`question-${idx}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
-                        key={idx}
-                        className={`aspect-square w-full rounded-lg border text-sm flex items-center justify-center transition-all ${bgClass}`}
+                      <label
+                        key={oIdx}
+                        onClick={() => handleSelectOption(currentQ._id, opt)}
+                        className={`p-4 rounded-xl border flex items-center gap-3 cursor-pointer transition-all text-sm font-medium ${
+                          isSelected
+                            ? 'bg-blue-600/20 border-blue-500 text-white shadow-lg shadow-blue-600/10'
+                            : 'bg-slate-900/60 border-slate-700/70 text-slate-300 hover:bg-slate-700/50'
+                        }`}
                       >
-                        {idx + 1}
-                      </button>
+                        <input
+                          type="radio"
+                          name={`question-${currentQ._id}`}
+                          checked={isSelected}
+                          onChange={() => {}}
+                          className="w-4 h-4 text-blue-600 focus:ring-blue-500 bg-slate-900 border-slate-700"
+                        />
+                        <span className="font-bold text-slate-400 uppercase">{String.fromCharCode(65 + oIdx)}.</span>
+                        <span className="flex-1">{opt}</span>
+                      </label>
                     );
                   })}
                 </div>
+              )}
 
-                <div className="mt-6 space-y-2.5 border-t border-slate-700/50 pt-4 text-xs font-semibold text-slate-400">
-                  <div className="flex items-center gap-2">
-                    <span className="w-3.5 h-3.5 rounded bg-emerald-600/20 border border-emerald-500 block"></span>
-                    <span>Answered ({Object.keys(answers).length})</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="w-3.5 h-3.5 rounded bg-slate-900 border border-slate-800 block"></span>
-                    <span>Unanswered ({activeExam.questions.length - Object.keys(answers).length})</span>
-                  </div>
-                </div>
-              </div>
+              {/* Navigation Buttons */}
+              <div className="flex items-center justify-between pt-4 border-t border-slate-700/60">
+                <button
+                  onClick={() => setCurrentIdx((prev) => Math.max(0, prev - 1))}
+                  disabled={currentIdx === 0}
+                  className="flex items-center gap-2 px-4 py-2.5 bg-slate-700 hover:bg-slate-600 text-white rounded-xl text-xs font-semibold transition-all disabled:opacity-40"
+                >
+                  <ArrowLeft size={16} />
+                  <span>Previous</span>
+                </button>
 
-              {/* Warning/Alert details */}
-              <div className="bg-amber-500/10 border border-amber-500/20 rounded-2xl p-5 text-amber-400 text-xs flex gap-3">
-                <AlertTriangle size={20} className="shrink-0" />
-                <div className="space-y-1">
-                  <p className="font-bold">Instructions:</p>
-                  <p className="leading-relaxed">Do not refresh this page. Doing so will reset your answers. Submit your answers before the timer terminates.</p>
-                </div>
+                {currentIdx < questions.length - 1 ? (
+                  <button
+                    onClick={() => setCurrentIdx((prev) => Math.min(questions.length - 1, prev + 1))}
+                    className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-semibold transition-all shadow-lg shadow-blue-600/25"
+                  >
+                    <span>Next</span>
+                    <ArrowRight size={16} />
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleSubmitExam}
+                    disabled={submitting}
+                    className="flex items-center gap-2 px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition-all shadow-lg shadow-emerald-600/25 disabled:opacity-50"
+                  >
+                    <Send size={16} />
+                    <span>Submit Exam</span>
+                  </button>
+                )}
               </div>
             </div>
-
-          </div>
-        )}
-
-        {/* CASE 3: EXAM EVALUATION RESULTS SUMMARY VIEW */}
-        {result && (
-          <div className="max-w-2xl mx-auto mt-16 animate-fadeInUp">
-            <div className="bg-slate-800/70 border border-emerald-500/30 rounded-3xl p-10 shadow-2xl text-center">
-              <div className="w-20 h-20 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle2 size={40} className="text-emerald-400" />
-              </div>
-              
-              <h2 className="text-3xl font-extrabold text-white mb-4">Exam submitted successfully.</h2>
-              <p className="text-slate-400 mb-10">Your responses have been recorded and sent for evaluation.</p>
-              
-              <button
-                onClick={handleBackToExams}
-                className="py-3.5 px-8 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white font-bold rounded-2xl transition-all shadow-lg shadow-blue-500/15 inline-flex items-center gap-2"
-              >
-                <ArrowLeft size={18} />
-                Back to Dashboard
-              </button>
-            </div>
-          </div>
-        )}
-
+          )}
+        </div>
       </main>
     </div>
   );

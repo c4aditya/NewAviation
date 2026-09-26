@@ -81,14 +81,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route
-              path="/exam/exam"
-              element={
-                <ProtectedRoute allowedRoles={['user']}>
-                  <Exam />
-                </ProtectedRoute>
-              }
-            />
+            <Route path="/exam/:token" element={<Exam />} />
           </Routes>
         </main>
 

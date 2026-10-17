@@ -28,8 +28,8 @@ const FlightBookingForm = () => {
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       {/* Trip Type Toggle */}
-      <div className="flex gap-4 mb-4">
-        <label className="flex items-center gap-2 cursor-pointer">
+      <div className="flex gap-4 mb-4 main-container">
+        <label className="label-text flex items-center gap-2 cursor-pointer">
           <input
             type="radio"
             name="tripType"
@@ -40,7 +40,7 @@ const FlightBookingForm = () => {
           />
           <span className="font-medium text-gray-700">Round Trip</span>
         </label>
-        <label className="flex items-center gap-2 cursor-pointer">
+        <label className="label-text flex items-center gap-2 cursor-pointer">
           <input
             type="radio"
             name="tripType"
@@ -53,10 +53,10 @@ const FlightBookingForm = () => {
         </label>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-input-feilds">
         {/* From */}
         <div>
-          <label className="label-text">
+          <label className="label-text hide">
             <MapPin size={16} className="inline mr-1" />
             From
           </label>
@@ -66,14 +66,14 @@ const FlightBookingForm = () => {
             value={formData.from}
             onChange={handleChange}
             placeholder="Enter departure city"
-            className="input-field"
+            className="input-field main-input-feilds"
             required
           />
         </div>
 
         {/* To */}
         <div>
-          <label className="label-text">
+          <label className="label-text hide">
             <MapPin size={16} className="inline mr-1" />
             To
           </label>
@@ -83,16 +83,16 @@ const FlightBookingForm = () => {
             value={formData.to}
             onChange={handleChange}
             placeholder="Enter arrival city"
-            className="input-field"
+            className="input-field  main-input-feilds"
             required
           />
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 small-gap">
         {/* Departure Date */}
         <div>
-          <label className="label-text">
+          <label className="label-text hide">
             <Calendar size={16} className="inline mr-1" />
             Departure Date
           </label>
@@ -102,7 +102,7 @@ const FlightBookingForm = () => {
             value={formData.departureDate}
             onChange={handleChange}
             min={new Date().toISOString().split('T')[0]}
-            className="input-field"
+            className="input-field main-input-feilds"
             required
           />
         </div>
@@ -110,7 +110,7 @@ const FlightBookingForm = () => {
         {/* Return Date */}
         {formData.tripType === 'roundtrip' && (
           <div>
-            <label className="label-text">
+            <label className="label-text hide">
               <Calendar size={16} className="inline mr-1" />
               Return Date
             </label>
@@ -120,7 +120,7 @@ const FlightBookingForm = () => {
               value={formData.returnDate}
               onChange={handleChange}
               min={formData.departureDate || new Date().toISOString().split('T')[0]}
-              className="input-field"
+              className="input-field main-input-feilds"
               required={formData.tripType === 'roundtrip'}
             />
           </div>
@@ -128,7 +128,7 @@ const FlightBookingForm = () => {
 
         {/* Passengers */}
         <div>
-          <label className="label-text">
+          <label className="label-text hide">
             <Users size={16} className="inline mr-1" />
             Passengers
           </label>
@@ -136,7 +136,7 @@ const FlightBookingForm = () => {
             name="passengers"
             value={formData.passengers}
             onChange={handleChange}
-            className="input-field"
+            className="input-field main-input-feilds"
           >
             {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
               <option key={num} value={num}>{num} {num === 1 ? 'Passenger' : 'Passengers'}</option>
@@ -145,7 +145,7 @@ const FlightBookingForm = () => {
         </div>
       </div>
 
-      <button type="submit" className="w-full btn-primary text-lg flex items-center justify-center gap-2">
+      <button type="submit" className="w-full btn-primary text-lg flex items-center justify-center gap-2 button-sub">
         <Search size={20} />
         Search Flights
         <ArrowRight size={20} />

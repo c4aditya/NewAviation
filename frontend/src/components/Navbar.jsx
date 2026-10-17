@@ -69,7 +69,7 @@ const Navbar = () => {
 
       {/* Main Navbar */}
       <nav className={`shadow-lg sticky top-0 z-50 transition-colors duration-500 ease-in-out ${isScrolled ? 'bg-slate-100' : 'bg-white'}`}>
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 main-navbar-container">
           <div className="flex justify-between items-center">
             {/* Logo */}
             <div className='main-logo'>
@@ -82,7 +82,7 @@ const Navbar = () => {
                 <img
                   src="https://pub-fad5bb8905db40d28f8096005388a2f1.r2.dev/Logo.png"
                   alt="Logo Scrolled"
-                  className={`transition-opacity duration-500 ease-in-out ${isScrolled ? 'opacity-100' : 'opacity-0'}`}
+                  className={`only_logo transition-opacity duration-500 ease-in-out ${isScrolled ? 'opacity-100' : 'opacity-0'}`}
                 />
               </Link>
             </div>

@@ -10,6 +10,13 @@
   ;
 }
 
+.main-heaing{
+  border-bottom: 1px solid red;
+}
+
+
+
+
 .slider {
   width: 100%;
   overflow: hidden;
@@ -80,8 +87,107 @@
     height: 100px;
   }
 
+  .main-heaing{
+    margin-bottom: 10px;
+    border-bottom: 1px solid black;
+  }
+
+  .poster-buttons{
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  padding: 5px;
+  width: 22%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
 
 
+
+}
+
+.main-container{
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+.label-text{
+ 
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.about-us-image{
+  
+  height: 100%;
+  width: 100%;
+}
+
+.hide{
+  display: none;
+}
+.flex-input-feilds{
+  display: flex;
+  gap: 3px;
+  margin-bottom: 3px;
+}
+.main-input-feilds{
+  padding: 5px;
+}
+.small-gap{
+  gap: 5px;
+}
+
+.button-sub{
+  padding: 5px;
+  font-size: 12px;
+}
+
+
+.main-navbar-container{
+ 
+  height: 80px;
+
+}
+
+.mid{
+  text-align: center;
+}
+
+.font-small{
+  font-size: 1.5rem;
+}
+
+.submit-buttons{
+ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttion-height{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  width: 50%;
+  font-size: 14px;
+}
+
+
+
+.main-logo img{
+ 
+  height: 60px;
+  margin-top: 10px;
+}
 
 
 

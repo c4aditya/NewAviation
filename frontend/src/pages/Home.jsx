@@ -114,14 +114,14 @@ const Home = () => {
           {/* Booking Form */}
           <div className="max-w-4xl mx-auto bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl p-4 md:p-6 animate-fadeInUp">
             {/* Tabs */}
-            <div className="flex flex-wrap justify-center gap-2 mb-6 border-b border-gray-200 pb-4">
+            <div className="main-heaing flex flex-wrap justify-center gap-2 mb-6 border-b border-gray-200 pb-4 clas">
               {tabs.map((tab) => {
                 const Icon = tab.icon;
                 return (
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all duration-300 text-sm md:text-base ${activeTab === tab.id
+                    className={`poster-buttons flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all duration-300 text-sm md:text-base ${activeTab === tab.id
                       ? 'bg-blue-600 text-white shadow-lg transform scale-105'
                       : 'text-gray-600 hover:bg-blue-50 hover:text-blue-600'
                       }`}
@@ -150,7 +150,7 @@ const Home = () => {
                 <img
                   src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&h=600&fit=crop"
                   alt="About Anant Airways"
-                  className="rounded-2xl shadow-2xl w-full object-cover h-[500px]"
+                  className="about-us-image rounded-2xl shadow-2xl w-full object-cover h-[500px]"
                 />
                 <div className="absolute -bottom-6 -right-6 bg-blue-600 text-white p-6 rounded-xl hidden md:block">
                   <p className="text-4xl font-bold mb-1">10+</p>
@@ -160,21 +160,24 @@ const Home = () => {
             </div>
 
             <div className="lg:w-1/2">
-              <h4 className="text-blue-600 font-bold uppercase tracking-wider mb-2">About Us</h4>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Exploration is the Essence of the Human Spirit</h2>
+              <h4 className="text-blue-600 font-bold uppercase tracking-wider mb-2 mid">About Us</h4>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 mid font-small">Exploration is the Essence of the Human Spirit</h2>
               <p className="text-gray-600 text-lg mb-6 leading-relaxed">
                 At Anant Airways, we believe that travel is more than just moving from one place to another; it's about the experiences, the memories, and the personal growth that happens along the way. Founded with a passion for exploration, we have been crafting unforgettable journeys for travelers worldwide.
               </p>
               <p className="text-gray-600 text-lg mb-8 leading-relaxed">
                 Whether you're looking for a relaxing beach getaway, an adventurous mountain trek, or a cultural immersion in a historic city, our team of expert travel planners is dedicated to making your dream vacation a reality. We handle all the details so you can focus on enjoying the moment.
               </p>
+
+              <div className='submit-buttons'>
               <button
                 onClick={() => navigate('/about')}
-                className="btn-outline inline-flex items-center gap-2"
+                className="btn-outline inline-flex items-center gap-2 buttion-height "
               >
                 Read More
                 <ArrowRight size={20} />
               </button>
+              </div>
             </div>
           </div>
         </div>

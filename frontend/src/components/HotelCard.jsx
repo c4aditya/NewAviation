@@ -1,8 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import { Star, MapPin, Wifi, UtensilsCrossed } from 'lucide-react';
 
 const HotelCard = ({ hotel, onBook }) => {
+  const navigate = useNavigate();
+
   return (
-    <div className="card overflow-hidden">
+    <div 
+      onClick={() => navigate(`/hotels/${hotel.id}`)}
+      className="card overflow-hidden cursor-pointer"
+    >
       <div className="relative h-48 overflow-hidden">
         <img 
           src={hotel.image} 
@@ -43,7 +49,10 @@ const HotelCard = ({ hotel, onBook }) => {
             <p className="text-xs text-gray-500">per night</p>
           </div>
           <button 
-            onClick={() => onBook && onBook(hotel)}
+            onClick={(e) => {
+              e.stopPropagation();
+              onBook && onBook(hotel);
+            }}
             className="btn-primary"
           >
             Book Now

@@ -195,7 +195,11 @@ const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {honeymoonPackages.map((pkg) => (
-              <div key={pkg.id} className="card rounded-none overflow-hidden group flex flex-col h-[480px] hover:shadow-xl transition-shadow border-b-2 border-transparent hover:border-pink-500">
+              <Link
+                key={pkg.id}
+                to={`/honeymoon-packages/${pkg.id}`}
+                className="card rounded-none overflow-hidden group flex flex-col h-[480px] hover:shadow-xl transition-shadow border-b-2 border-transparent hover:border-pink-500 cursor-pointer"
+              >
                 <div className="relative h-56 overflow-hidden flex-shrink-0">
                   <img
                     src={pkg.image}
@@ -227,12 +231,12 @@ const Home = () => {
                       <p className="text-[10px] text-gray-400 uppercase font-semibold">Starting from</p>
                       <p className="text-lg font-bold text-pink-600 leading-none">{pkg.price}</p>
                     </div>
-                    <button className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-1.5 font-semibold transition-colors text-xs uppercase tracking-wide">
+                    <span className="bg-pink-500 group-hover:bg-pink-600 text-white px-4 py-1.5 font-semibold transition-colors text-xs uppercase tracking-wide">
                       View Details
-                    </button>
+                    </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -253,7 +257,11 @@ const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
             {hotels.slice(0, 8).map((hotel) => (
-              <div key={hotel.id} className="card rounded-none overflow-hidden group flex flex-col h-[480px] hover:shadow-xl transition-shadow border-b-2 border-transparent hover:border-blue-600">
+              <Link
+                key={hotel.id}
+                to={`/hotels/${hotel.id}`}
+                className="card rounded-none overflow-hidden group flex flex-col h-[480px] hover:shadow-xl transition-shadow border-b-2 border-transparent hover:border-blue-600 cursor-pointer"
+              >
                 <div className="relative h-56 overflow-hidden flex-shrink-0">
                   <img
                     src={hotel.image}
@@ -297,12 +305,12 @@ const Home = () => {
                       <p className="text-[10px] text-gray-400 uppercase font-semibold">Per Night</p>
                       <p className="text-lg font-bold text-blue-600 leading-none">₹{hotel.price}</p>
                     </div>
-                    <button className="text-blue-600 hover:bg-blue-50 p-2 transition-colors">
+                    <span className="text-blue-600 group-hover:bg-blue-50 p-2 transition-colors">
                       <ArrowRight size={20} />
-                    </button>
+                    </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 

@@ -9,11 +9,13 @@ import ContactUs from './pages/ContactUs';
 import Academy from './pages/Academy';
 import AcademyDetails from './pages/AcademyDetails';
 import Hotels from './pages/Hotels';
+import HotelDetails from './pages/HotelDetails';
 import Flights from './pages/Flights';
 import Buses from './pages/Buses';
 import Cabs from './pages/Cabs';
 import Destinations from './pages/Destinations';
 import DestinationDetails from './pages/DestinationDetails';
+import HoneymoonPackageDetails from './pages/HoneymoonPackageDetails';
 import Career from './pages/Career';
 import JobDetail from './pages/JobDetail';
 import Caution from './pages/Caution';
@@ -53,11 +55,14 @@ function App() {
             <Route path="/academy" element={<Academy />} />
             <Route path="/academy/:courseId" element={<AcademyDetails />} />
             <Route path="/hotels" element={<Hotels />} />
+            <Route path="/hotels/:id" element={<HotelDetails />} />
             <Route path="/flights" element={<Flights />} />
             <Route path="/buses" element={<Buses />} />
             <Route path="/cabs" element={<Cabs />} />
             <Route path="/destinations" element={<Destinations />} />
             <Route path="/destinations/:id" element={<DestinationDetails />} />
+            <Route path="/honeymoon-packages/:id" element={<HoneymoonPackageDetails />} />
+            <Route path="/honeymoon/:id" element={<HoneymoonPackageDetails />} />
             <Route path="/career" element={<Career />} />
             <Route path="/career/:jobId" element={<JobDetail />} />
             <Route path="/caution" element={<Caution />} />
